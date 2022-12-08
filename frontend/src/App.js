@@ -1,10 +1,11 @@
 
 // import './App.css';
-import Banner from './components/Banner';
+import { Route, Routes } from 'react-router-dom';
+
 import Footer from './components/Footer';
-import Library from './components/Library';
-import MostPopular from './components/MostPopular';
+
 import NavBar from './components/NavBar';
+import Home from './Pages/Home';
 import Preloader from './components/Preloader';
 
 function App() {
@@ -18,9 +19,11 @@ function App() {
         <div class="row">
           <div class="col-lg-12">
             <div class="page-content">
-              <Banner />
-              <MostPopular />
-              <Library />
+            <Routes>
+            <Route path="/" element={<Home />} />
+           
+          </Routes>
+              
             </div>
           </div>
         </div>
