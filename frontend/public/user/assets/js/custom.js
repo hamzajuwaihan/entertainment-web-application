@@ -201,7 +201,19 @@
 	        });
 	    });
 	});
+	function showBox()
+	{
+		const status = document.getElementById("nav-box-minimize").style.display;
+		if(status == "none")
+		{
+			document.getElementById("nav-box-minimize").style.display = "block";
+		}
+		else
+		{
+			document.getElementById("nav-box-minimize").style.display = "none";
+		}
 
+	}
 	function onScroll(event){
 	    var scrollPos = $(document).scrollTop();
 	    $('.nav a').each(function () {
