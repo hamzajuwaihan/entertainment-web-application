@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 function showBox() {
     const status = document.getElementById("nav-box-minimize").style.display;
     if (status === "none") {
@@ -31,7 +32,7 @@ const NavBar = () => {
                                 {/* <!-- ***** Search End ***** -->
                 <!-- ***** Menu Start ***** --> */}
                                 <ul class="nav" id='nav-box-minimize' >
-                                    <li><a href="index.html" class="active">Home</a></li>
+                                    <li><Link to="/" class="active">Home</Link></li>
                                     <li><a href="browse.html">Browse</a></li>
                                     <li><a href="details.html">Details</a></li>
                                     <li><a href="streams.html">Streams</a></li>
