@@ -1,5 +1,8 @@
 import React from 'react'
-
+import OwlCarousel from 'react-owl-carousel';
+import 'owl.carousel/dist/assets/owl.carousel.css';
+import 'owl.carousel/dist/assets/owl.theme.default.css';
+import './owl.css';
 function Featured() {
   return (
     <>
@@ -10,7 +13,12 @@ function Featured() {
               <h4><em>Featured</em> Games</h4>
             </div>
             <div className="owl-features owl-carousel">
-
+              <OwlCarousel items={3}
+                className="owl-theme"
+                loop
+                autoplay
+                nav
+                margin={8} >
                 <div className="item">
                   <div className="thumb">
                     <img src="./user/assets/images/featured-01.jpg" />
@@ -89,7 +97,7 @@ function Featured() {
                     <li><i className="fa fa-download" /> 2.3M</li>
                   </ul>
                 </div>
-
+                </OwlCarousel>
             </div>
           </div>
         </div>
