@@ -32,7 +32,9 @@ const NavBar = () => {
                                 {/* <!-- ***** Search End ***** -->
                 <!-- ***** Menu Start ***** --> */}
                                 <ul class="nav" id='nav-box-minimize' >
-                                    <li><Link to="/" class="active">Home</Link></li>
+                                    <li><Link to="/" class="active">Home</Link></li>   
+                                    <li><Link to="/register">Register</Link></li>
+                                    <li><Link to="/login">Log In</Link></li>
                                     <li><Link to="/Browse">Browse</Link></li>
                                     <li><Link to="/Details">Details</Link></li>
                                     <li><Link to="/Streams">Streams</Link></li>
