@@ -7,7 +7,8 @@ import Footer from './components/Footer';
 import NavBar from './components/NavBar';
 import Home from './Pages/Home';
 import Preloader from './components/Preloader';
-
+import Register from './components/Register';
+import Login from './components/Login';
 function App() {
 
   return (
@@ -21,7 +22,8 @@ function App() {
             <div class="page-content">
             <Routes>
             <Route path="/" element={<Home />} />
-           
+            <Route path="/register" element={<Register/>}/>
+        <Route path="/login" element={<Login />}/>
           </Routes>
               
             </div>

@@ -33,9 +33,12 @@ const NavBar = () => {
                 <!-- ***** Menu Start ***** --> */}
                                 <ul class="nav" id='nav-box-minimize' >
                                     <li><Link to="/" class="active">Home</Link></li>
+                           
                                     <li><a href="browse.html">Browse</a></li>
                                     <li><a href="details.html">Details</a></li>
-                                    <li><a href="streams.html">Streams</a></li>
+                                    <li><a href="streams.html">Streams</a></li>         
+                                    <li><Link to="/register">Register</Link></li>
+                                    <li><Link to="/login">Log In</Link></li>
                                     <li><a href="profile.html">Profile <img src="./user/assets/images/profile-header.jpg" alt="" /></a></li>
                                 </ul>
                                 <a class='menu-trigger' id='trigger' onClick={showBox}>
