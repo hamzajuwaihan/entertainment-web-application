@@ -33,10 +33,10 @@ const NavBar = () => {
                 <!-- ***** Menu Start ***** --> */}
                                 <ul class="nav" id='nav-box-minimize' >
                                     <li><Link to="/" class="active">Home</Link></li>
-                                    <li><a href="browse.html">Browse</a></li>
-                                    <li><a href="details.html">Details</a></li>
-                                    <li><a href="streams.html">Streams</a></li>
-                                    <li><a href="profile.html">Profile <img src="./user/assets/images/profile-header.jpg" alt="" /></a></li>
+                                    <li><Link to="/Browse">Browse</Link></li>
+                                    <li><Link to="/Details">Details</Link></li>
+                                    <li><Link to="/Streams">Streams</Link></li>
+                                    <li><Link to="Profile">Profile <img src="./user/assets/images/profile-header.jpg" alt="" /></Link></li>
                                 </ul>
                                 <a class='menu-trigger' id='trigger' onClick={showBox}>
                                     <span>Menu</span>
