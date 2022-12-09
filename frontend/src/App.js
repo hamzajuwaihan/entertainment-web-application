@@ -11,12 +11,16 @@ import Browse from './Pages/Browse';
 import Details from './Pages/Details';
 import Streams from './Pages/Streams';
 import Profile from './Pages/Profile';
+import { Provider } from 'react-redux'
+import store from './redux/store';
 
 function App() {
 
   return (
     <>
+    <Provider store={store}>
       <Preloader />
+
       <NavBar />
 
       <div class="container">
@@ -41,6 +45,7 @@ function App() {
         </div>
       </div>
       <Footer />
+      </Provider>
     </>
   );
 }
