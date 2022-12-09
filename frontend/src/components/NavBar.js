@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 function showBox() {
     const status = document.getElementById("nav-box-minimize").style.display;
     if (status === "none") {
@@ -12,35 +12,35 @@ function showBox() {
 const NavBar = () => {
     return (
         <>
-            <header class="header-area header-sticky">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12">
-                            <nav class="main-nav">
+            <header className="header-area header-sticky">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-12">
+                            <nav className="main-nav">
                                 {/* <!-- ***** Logo Start ***** --> */}
-                                <a href="index.html" class="logo">
+                                <a href="index.html" className="logo">
                                     <img src="./user/assets/images/logo.png" alt="" />
                                 </a>
                                 {/* <!-- ***** Logo End ***** -->
                 <!-- ***** Search End ***** --> */}
-                                <div class="search-input">
+                                <div className="search-input">
                                     <form id="search" action="#">
                                         <input type="text" placeholder="Type Something" id='searchText' name="searchKeyword" onkeypress="handle" />
-                                        <i class="fa fa-search"></i>
+                                        <i className="fa fa-search"></i>
                                     </form>
                                 </div>
                                 {/* <!-- ***** Search End ***** -->
                 <!-- ***** Menu Start ***** --> */}
-                                <ul class="nav" id='nav-box-minimize' >
-                                    <li><Link to="/" class="active">Home</Link></li>   
-                                    <li><Link to="/register">Register</Link></li>
-                                    <li><Link to="/login">Log In</Link></li>
-                                    <li><Link to="/Browse">Browse</Link></li>
-                                    <li><Link to="/Details">Details</Link></li>
-                                    <li><Link to="/Streams">Streams</Link></li>
-                                    <li><Link to="Profile">Profile <img src="./user/assets/images/profile-header.jpg" alt="" /></Link></li>
+                                <ul className="nav" id='nav-box-minimize' >
+                                    <li><NavLink to="/" >Home</NavLink></li>
+                                    <li><NavLink to="register">Register</NavLink></li>
+                                    <li><NavLink to="/login">Log In</NavLink></li>
+                                    <li><NavLink to="/Browse">Browse</NavLink></li>
+                                    <li><NavLink to="/Details">Details</NavLink></li>
+                                    <li><NavLink to="/Streams">Streams</NavLink></li>
+                                    <li><NavLink to="Profile">Profile <img src="./user/assets/images/profile-header.jpg" alt="" /></NavLink></li>
                                 </ul>
-                                <a class='menu-trigger' id='trigger' onClick={showBox}>
+                                <a className='menu-trigger' id='trigger' onClick={showBox}>
                                     <span>Menu</span>
                                 </a>
                                 {/* <!-- ***** Menu End ***** --> */}
