@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
-use App\Models\Movie;
 
-class MovieController extends Controller
+class Users extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class MovieController extends Controller
      */
     public function index()
     {
-        return response()->json(Movie::all());
+        return response()->json(User::all());
     }
 
     /**
@@ -35,18 +35,16 @@ class MovieController extends Controller
      */
     public function store(Request $request)
     {
-
-        $movie = Movie::create($request->all());
-        return response()->json($movie, 201);
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\movie  $movie
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Movie $movie)
+    public function show($id)
     {
         //
     }
@@ -54,10 +52,10 @@ class MovieController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\movie  $movie
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Movie $movie)
+    public function edit($id)
     {
         //
     }
@@ -66,35 +64,22 @@ class MovieController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Movie  $movie
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $movie)
+    public function update(Request $request, $id)
     {
-        // movie in the parameter is for id
-        $movie = Movie::find($movie);
-        return $request->getContent();
-        
-        
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Movie  $movie
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($movie_id)
+    public function destroy($id)
     {
-        $movie = Movie::find($movie_id);
-        $movie->delete();
-        return response()->json(Movie::all());
-    }
-    public function search($searchTerm)
-    {
-        return response()->json(Movie::query()
-            ->where('title', 'LIKE', "%{$searchTerm}%")
-            ->orWhere('content', 'LIKE', "%{$searchTerm}%")
-            ->get());
+        //
     }
 }

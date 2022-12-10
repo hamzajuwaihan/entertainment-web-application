@@ -13,28 +13,39 @@ import Details from './Pages/Details';
 import Streams from './Pages/Streams';
 import Profile from './Pages/Profile';
 import MoviesContainerTest from './components/MoviesContainerTest';
-import SingleMovieTest from './components/SingleMovieTest';
+import MoviesDashboard from './components/AdminDashboard/MoviesDashboard';
+import IndexRoute from './components/AdminDashboard/IndexRoute';
+import { Provider } from 'react-redux';
+import store from './redux/store';
+import UsersDashboard from './components/AdminDashboard/UsersDashboard';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/" element={<App />} >
-          <Route path="/" element={<Home />} />
-          <Route path="register" element={<Register />} />
-          <Route path="login" element={<Login />} />
-          <Route path="Browse" element={<Browse />} />
-          <Route path="Streams" element={<Streams />} />
-          <Route path="Profile" element={<Profile />} />
-          <Route path="movies" element={<MoviesContainerTest />} />
-          <Route path="movie/:movieId" element={<Details />} />
+    <Provider store={store}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/dashboard" element={<Dashboard />} >
+            <Route index element={<IndexRoute />} />
+            <Route path="movies" element={<MoviesDashboard />} />
+            <Route path="users" element={<UsersDashboard />} />
+          </Route>
+          <Route path="/" element={<App />} >
+            <Route path="/" element={<Home />} />
+            <Route path="register" element={<Register />} />
+            <Route path="login" element={<Login />} />
+            <Route path="Browse" element={<Browse />} />
+            <Route path="Streams" element={<Streams />} />
+            <Route path="Profile" element={<Profile />} />
+            <Route path="movies" element={<MoviesContainerTest />} />
+            <Route path="movie/:movieId" element={<Details />} />
 
-        </Route>
-      </Routes>
+          </Route>
 
-    </BrowserRouter>
+        </Routes>
+
+      </BrowserRouter>
+    </Provider>
   </React.StrictMode>
 );
 

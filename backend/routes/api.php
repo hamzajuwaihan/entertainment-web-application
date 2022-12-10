@@ -2,6 +2,7 @@
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ShowMovie;
+use App\Http\Controllers\Users;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -24,3 +25,4 @@ Route::post('login', LoginController::class);
 Route::resource('movies', 'App\Http\Controllers\MovieController');
 Route::get('movies/search/{title}', 'App\Http\Controllers\MovieController@search');
 Route::get('movie/{id}', ShowMovie::class);
+Route::resource('users', Users::class);

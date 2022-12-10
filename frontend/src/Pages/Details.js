@@ -10,7 +10,6 @@ function Details() {
   useEffect(() => {
     axios.get(`http://localhost:8000/api/movie/${movieId}`).then((res) => {
       setMovie(res.data);
-      console.log(movie)
     }).catch((err) => {
       console.log(err);
     })
