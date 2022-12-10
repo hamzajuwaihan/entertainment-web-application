@@ -1,8 +1,5 @@
 import React from 'react'
-import OwlCarousel from 'react-owl-carousel';
-import 'owl.carousel/dist/assets/owl.carousel.css';
-import 'owl.carousel/dist/assets/owl.theme.default.css';
-import '../Browse/owl.css';
+
 function LiveStreamStart() {
   return (
     <div className="live-stream">
@@ -12,12 +9,7 @@ function LiveStreamStart() {
         </div>
       </div>
       <div className="row">
-        <OwlCarousel items={3}
-          className="owl-theme"
-          loop
-          autoplay
-          nav
-          margin={8} >
+
           <div className="col-lg-3 col-sm-6">
             <div className="item">
               <div className="thumb">
@@ -218,7 +210,7 @@ function LiveStreamStart() {
               </div>
             </div>
           </div>
-        </OwlCarousel>
+
         <div className="col-lg-12">
           <div className="main-button">
             <a href="streams.html">Load More Streams</a>
