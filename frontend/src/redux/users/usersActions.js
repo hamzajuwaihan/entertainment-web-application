@@ -29,7 +29,12 @@ export const userRegister = (user) => {
             .then(response => {
                 const user = response.data.user
                 dispatch(userRegisterSuccess(user))
-                sessionStorage.setItem('user', JSON.stringify(user));
+             
+                sessionStorage.setItem('user',  JSON.stringify(user) );
+
+
+
+
             })
             .catch(error => {
                 const errorMsg = error.message
@@ -48,7 +53,9 @@ export const userLogout = () => {
 export const userClearInfo = () => {
     return (dispatch) => {
         dispatch(userLogout())
-        sessionStorage.removeItem('user')
+        // sessionStorage.removeItem('user')
+        // sessionStorage.removeItem('name')
+        sessionStorage.clear();
     }
 }
 
@@ -80,8 +87,12 @@ export const userLogin = (user) => {
                 console.log(response);
                 const user = response.data.user
                 dispatch(userLoginSuccess(user))
+  
                 sessionStorage.setItem('user', JSON.stringify(user));
+                sessionStorage.setItem('name', user.name);
+            
               
+
             })
             .catch(error => {
                
