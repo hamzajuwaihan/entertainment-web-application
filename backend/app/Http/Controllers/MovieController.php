@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
 use App\Models\Movie;
 
 class MovieController extends Controller
 {
-    /**
+
+     /**
+
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -43,6 +46,7 @@ class MovieController extends Controller
     /**
      * Display the specified resource.
      *
+
      * @param  \App\Models\movie  $movie
      * @return \Illuminate\Http\Response
      */
@@ -54,10 +58,12 @@ class MovieController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
+
      * @param  \App\Models\movie  $movie
      * @return \Illuminate\Http\Response
      */
     public function edit(Movie $movie)
+
     {
         //
     }
@@ -98,3 +104,4 @@ class MovieController extends Controller
             ->get());
     }
 }
+
