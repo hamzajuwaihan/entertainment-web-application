@@ -18,27 +18,27 @@ function App() {
 
   return (
     <>
-    <Provider store={store}>
-      <Preloader />
+      <Provider store={store}>
+        <Preloader />
 
-      <NavBar />
+        <NavBar />
 
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="page-content">
-            {/* <Routes>
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="page-content">
+                {/* <Routes>
     
             
             
 
           </Routes> */}
-              <Outlet />
+                <Outlet />
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <Footer />
+        <Footer />
       </Provider>
     </>
   );

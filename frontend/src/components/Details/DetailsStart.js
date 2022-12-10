@@ -34,13 +34,13 @@ function DetailsStart() {
             </div>
           </div>
           <div className="col-lg-4">
-            <img src="./user/assets/images/details-01.jpg" alt style={{borderRadius: 23, marginBottom: 30}} />
+            <img src="/user/assets/images/details-01.jpg" alt style={{borderRadius: 23, marginBottom: 30}} />
           </div>
           <div className="col-lg-4">
-            <img src="./user/assets/images/details-02.jpg" alt style={{borderRadius: 23, marginBottom: 30}} />
+            <img src="/user/assets/images/details-02.jpg" alt style={{borderRadius: 23, marginBottom: 30}} />
           </div>
           <div className="col-lg-4">
-            <img src="./user/assets/images/details-03.jpg" alt style={{borderRadius: 23, marginBottom: 30}} />
+            <img src="/user/assets/images/details-03.jpg" alt style={{borderRadius: 23, marginBottom: 30}} />
           </div>
           <div className="col-lg-12">
             <p>Cyborg Gaming is free HTML CSS website template provided by TemplateMo. This is Bootstrap v5.2.0 layout. You can make a <a href="https://paypal.me/templatemo" target="_blank">small contribution via PayPal</a> to info [at] templatemo.com and thank you for supporting. If you want to get the PSD source files, please contact us. Lorem ipsum dolor sit consectetur es dispic dipiscingei elit, sed doers eiusmod lisum hored tempor.</p>

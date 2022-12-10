@@ -12,7 +12,7 @@ function OtherStart() {
     </div>
     <div className="col-lg-6">
       <div className="item">
-        <img src="./user/assets/images/game-01.jpg" alt className="templatemo-item" />
+        <img src="/user/assets/images/game-01.jpg" alt className="templatemo-item" />
         <h4>Dota 2</h4><span>Sandbox</span>
         <ul>
           <li><i className="fa fa-star" /> 4.8</li>
@@ -22,7 +22,7 @@ function OtherStart() {
     </div>
     <div className="col-lg-6">
       <div className="item">
-        <img src="./user/assets/images/game-02.jpg" alt className="templatemo-item" />
+        <img src="/user/assets/images/game-02.jpg" alt className="templatemo-item" />
         <h4>Dota 2</h4><span>Sandbox</span>
         <ul>
           <li><i className="fa fa-star" /> 4.8</li>
@@ -32,7 +32,7 @@ function OtherStart() {
     </div>
     <div className="col-lg-6">
       <div className="item">
-        <img src="./user/assets/images/game-03.jpg" alt className="templatemo-item" />
+        <img src="/user/assets/images/game-03.jpg" alt className="templatemo-item" />
         <h4>Dota 2</h4><span>Sandbox</span>
         <ul>
           <li><i className="fa fa-star" /> 4.8</li>
@@ -42,7 +42,7 @@ function OtherStart() {
     </div>
     <div className="col-lg-6">
       <div className="item">
-        <img src="./user/assets/images/game-02.jpg" alt className="templatemo-item" />
+        <img src="/user/assets/images/game-02.jpg" alt className="templatemo-item" />
         <h4>Dota 2</h4><span>Sandbox</span>
         <ul>
           <li><i className="fa fa-star" /> 4.8</li>
@@ -52,7 +52,7 @@ function OtherStart() {
     </div>
     <div className="col-lg-6">
       <div className="item">
-        <img src="./user/assets/images/game-03.jpg" alt className="templatemo-item" />
+        <img src="/user/assets/images/game-03.jpg" alt className="templatemo-item" />
         <h4>Dota 2</h4><span>Sandbox</span>
         <ul>
           <li><i className="fa fa-star" /> 4.8</li>
@@ -62,7 +62,7 @@ function OtherStart() {
     </div>
     <div className="col-lg-6">
       <div className="item">
-        <img src="./user/assets/images/game-01.jpg" alt className="templatemo-item" />
+        <img src="/user/assets/images/game-01.jpg" alt className="templatemo-item" />
         <h4>Dota 2</h4><span>Sandbox</span>
         <ul>
           <li><i className="fa fa-star" /> 4.8</li>

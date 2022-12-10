@@ -1,8 +1,8 @@
 import React, { useRef, useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { deleteMovie, updateMovie } from '../redux/movies/moviesActions';
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
+// import Button from 'react-bootstrap/Button';
+// import Modal from 'react-bootstrap/Modal';
 function SingleMovie({ id, title, content, image }) {
     const [show, setShow] = useState(false);
     const pattern = /^[a-zA-Z ]*$/;
@@ -55,11 +55,11 @@ function SingleMovie({ id, title, content, image }) {
                 <form onSubmit={formHandler}>
                     <button className="btn btn-danger me-2" type='submit'>Delete</button>
 
-                    <Button variant="primary" onClick={handleShow}>
+                    {/* <Button variant="primary" onClick={handleShow}>
                         Edit
-                    </Button>
+                    </Button> */}
                 </form>
-
+{/* 
                 <Modal show={show} onHide={handleClose}>
                     <Modal.Header closeButton>
                         <Modal.Title>Modal heading {id}</Modal.Title>
@@ -78,7 +78,7 @@ function SingleMovie({ id, title, content, image }) {
                                 <label htmlFor="image" className="form-label">Image</label>
                                 <input type="text" className="form-control" id="image" name='image' value={editImage} onChange={(e) => setImage(e.target.value)} />
                             </div> */}
-                            {hasError && <div className="alert alert-danger" role="alert">
+                            {/* {hasError && <div className="alert alert-danger" role="alert">
                                 {errorMessage}
                             </div>}
                         </Modal.Body>
@@ -89,9 +89,9 @@ function SingleMovie({ id, title, content, image }) {
                             <Button variant="primary" type='submit'>
                                 Save Changes
                             </Button>
-                        </Modal.Footer>
-                    </form>
-                </Modal>
+                        </Modal.Footer> */}
+                    {/* </form>
+                </Modal> */} 
             </div>
 
 

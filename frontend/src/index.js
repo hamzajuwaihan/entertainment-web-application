@@ -12,6 +12,8 @@ import Browse from './Pages/Browse';
 import Details from './Pages/Details';
 import Streams from './Pages/Streams';
 import Profile from './Pages/Profile';
+import MoviesContainerTest from './components/MoviesContainerTest';
+import SingleMovieTest from './components/SingleMovieTest';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -24,9 +26,10 @@ root.render(
           <Route path="register" element={<Register />} />
           <Route path="login" element={<Login />} />
           <Route path="Browse" element={<Browse />} />
-          <Route path="Details" element={<Details />} />
           <Route path="Streams" element={<Streams />} />
           <Route path="Profile" element={<Profile />} />
+          <Route path="movies" element={<MoviesContainerTest />} />
+          <Route path="movie/:movieId" element={<Details />} />
 
         </Route>
       </Routes>

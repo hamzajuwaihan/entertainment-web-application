@@ -19,7 +19,7 @@ const NavBar = () => {
                             <nav className="main-nav">
                                 {/* <!-- ***** Logo Start ***** --> */}
                                 <a href="index.html" className="logo">
-                                    <img src="./user/assets/images/logo.png" alt="" />
+                                    <img src="/user/assets/images/logo.png" alt="" />
                                 </a>
                                 {/* <!-- ***** Logo End ***** -->
                 <!-- ***** Search End ***** --> */}
@@ -36,9 +36,9 @@ const NavBar = () => {
                                     <li><NavLink to="register">Register</NavLink></li>
                                     <li><NavLink to="/login">Log In</NavLink></li>
                                     <li><NavLink to="/Browse">Browse</NavLink></li>
-                                    <li><NavLink to="/Details">Details</NavLink></li>
+                                    <li><NavLink to="/movies">Movies</NavLink></li>
                                     <li><NavLink to="/Streams">Streams</NavLink></li>
-                                    <li><NavLink to="Profile">Profile <img src="./user/assets/images/profile-header.jpg" alt="" /></NavLink></li>
+                                    <li><NavLink to="Profile">Profile <img src="/user/assets/images/profile-header.jpg" alt="" /></NavLink></li>
                                 </ul>
                                 <a className='menu-trigger' id='trigger' onClick={showBox}>
                                     <span>Menu</span>
