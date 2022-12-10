@@ -1,10 +1,10 @@
-// import blogsReducer from "./blogs/blogsReducer";
+import moviesReducer from "./movies/moviesReducer";
 import { combineReducers } from 'redux'
 import usersReducer from "./users/usersReducer";
 
 
 const rootReducer = combineReducers({
-    // blogs: blogsReducer,
+    movies: moviesReducer,
     user: usersReducer
 })
 
