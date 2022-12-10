@@ -6,18 +6,19 @@ import { useParams } from 'react-router';
 import axios from 'axios';
 function Details() {
   const { movieId } = useParams();
-
+  const [movie, setMovie] = React.useState({});
   useEffect(() => {
-    axios.get(`https://localhost:8000/api/movie/${movieId}`).then((res) => {
-      console.log(res.data);
+    axios.get(`http://localhost:8000/api/movie/${movieId}`).then((res) => {
+      setMovie(res.data);
+      console.log(movie)
     }).catch((err) => {
       console.log(err);
     })
   }, []);
   return (
     <>
-      <Featured />
-      <DetailsStart />
+      <Featured/>
+      <DetailsStart title={movie.title} />
       <OtherStart />
     </>
   )

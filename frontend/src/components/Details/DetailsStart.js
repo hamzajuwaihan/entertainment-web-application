@@ -1,12 +1,12 @@
 import React from 'react'
 
-function DetailsStart() {
+function DetailsStart({title}) {
   return (
     <>
     <div className="game-details">
   <div className="row">
     <div className="col-lg-12">
-      <h2>Fortnite Details</h2>
+      <h2 className='heading-section'><span style={{ color:'#e75e8d' }}><em>{title}</em></span> Details</h2>
     </div>
     <div className="col-lg-12">
       <div className="content">
