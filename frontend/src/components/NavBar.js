@@ -1,5 +1,10 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom';
+import { NavLink ,useLocation, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { userClearInfo } from '../redux/users/usersActions';
+
 function showBox() {
     const status = document.getElementById("nav-box-minimize").style.display;
     if (status === "none") {
@@ -9,7 +14,15 @@ function showBox() {
         document.getElementById("nav-box-minimize").style.display = "none";
     }
 }
-const NavBar = () => {
+
+
+function NavBar() {
+    const [search, setSearch] = useState('');
+    const dispatch = useDispatch();
+    const user = useSelector(state => state.user.user);
+    const location = useLocation();
+    const navigate = useNavigate();
+
     return (
         <>
             <header className="header-area header-sticky">
@@ -33,12 +46,39 @@ const NavBar = () => {
                 <!-- ***** Menu Start ***** --> */}
                                 <ul className="nav" id='nav-box-minimize' >
                                     <li><NavLink to="/" >Home</NavLink></li>
-                                    <li><NavLink to="register">Register</NavLink></li>
-                                    <li><NavLink to="/login">Log In</NavLink></li>
                                     <li><NavLink to="/Browse">Browse</NavLink></li>
                                     <li><NavLink to="/movies">Movies</NavLink></li>
                                     <li><NavLink to="/Streams">Streams</NavLink></li>
-                                    <li><NavLink to="Profile">Profile <img src="/user/assets/images/profile-header.jpg" alt="" /></NavLink></li>
+                                    {  sessionStorage.length === 0 ? (
+                                        <>
+                                        <li className="nav-item">
+                                        <NavLink className="nav-link" to={'/register'}>Register</NavLink>
+                                       </li>
+                                       <li className="nav-item">
+                                           <NavLink className="nav-link" to={'/login'}>login</NavLink>
+                                       </li></>
+                                       ) : null}
+                                       {
+                                        sessionStorage.length !== 0 ? (<li className="nav-item dropdown">
+                                               <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                   {sessionStorage.getItem("name")}
+                                               </a>
+                                               <ul className="dropdown-menu">
+                                               <li><NavLink to="Profile">Profile</NavLink></li>
+                                                   <li><button className="dropdown-item" onClick={() => dispatch(userClearInfo())}>Logout</button></li>
+           
+                                               </ul>
+                                           </li>
+
+                                           
+                                           
+                                           
+                                           ) : null
+                                       }
+                                 
+
+                                      <li></li>
+                                   
                                 </ul>
                                 <a className='menu-trigger' id='trigger' onClick={showBox}>
                                     <span>Menu</span>
