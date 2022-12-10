@@ -1,16 +1,40 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
+// import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Dashboard from './components/Dashboard';
+import Home from './Pages/Home';
+import Register from './components/Register';
+import Login from './components/Login';
+import Browse from './Pages/Browse';
+import Details from './Pages/Details';
+import Streams from './Pages/Streams';
+import Profile from './Pages/Profile';
+import MoviesContainerTest from './components/MoviesContainerTest';
+import SingleMovieTest from './components/SingleMovieTest';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-  <BrowserRouter>
-  <App />
-</BrowserRouter>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/" element={<App />} >
+          <Route path="/" element={<Home />} />
+          <Route path="register" element={<Register />} />
+          <Route path="login" element={<Login />} />
+          <Route path="Browse" element={<Browse />} />
+          <Route path="Streams" element={<Streams />} />
+          <Route path="Profile" element={<Profile />} />
+          <Route path="movies" element={<MoviesContainerTest />} />
+          <Route path="movie/:movieId" element={<Details />} />
+
+        </Route>
+      </Routes>
+
+    </BrowserRouter>
   </React.StrictMode>
 );
 

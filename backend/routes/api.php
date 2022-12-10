@@ -2,6 +2,7 @@
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\ShowMovie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -22,5 +23,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::resource('register', RegisterController::class);
 Route::post('login', LoginController::class);
+Route::resource('movies', 'App\Http\Controllers\MovieController');
+Route::get('movies/search/{title}', 'App\Http\Controllers\MovieController@search');
+Route::get('movie/{id}', ShowMovie::class);
 
-Route::resource('movies', MovieController::class);

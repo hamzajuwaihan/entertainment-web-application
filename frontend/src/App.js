@@ -1,6 +1,6 @@
 
-// import './App.css';
-import { Route, Routes } from 'react-router-dom';
+import './App.css';
+import { Outlet, Route, Routes } from 'react-router-dom';
 import Footer from './components/Footer';
 import NavBar from './components/NavBar';
 import Home from './Pages/Home';
@@ -18,33 +18,27 @@ function App() {
 
   return (
     <>
-    <Provider store={store}>
-      <Preloader />
+      <Provider store={store}>
+        <Preloader />
 
-      <NavBar />
+        <NavBar />
 
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="page-content">
-            <Routes>
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="page-content">
+                {/* <Routes>
     
-            <Route path="/" element={<Home />} />
-            <Route path="/register" element={<Register/>}/>
-            <Route path="/login" element={<Login />}/>
-            <Route path="/Browse" element={<Browse />} />
-            <Route path="/Details" element={<Details />} />
-            <Route path="/Streams" element={<Streams />} />
-            <Route path="/Profile" element={<Profile />} />
-           
+            
+            
 
-          </Routes>
-              
+          </Routes> */}
+                <Outlet />
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <Footer />
+        <Footer />
       </Provider>
     </>
   );
