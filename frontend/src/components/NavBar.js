@@ -1,7 +1,10 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
-import { useDispatch } from 'react-redux'
+
 import { userClearInfo } from "../redux/users/usersActions";
+import { fetchMovies, searchMovie } from '../redux/movies/moviesActions';
+import React, { useState } from 'react'
+import { useDispatch} from 'react-redux';
+import {NavLink, useLocation, useNavigate } from 'react-router-dom'
+
 function showBox() {
   const status = document.getElementById("nav-box-minimize").style.display;
   if (status === "none") {
@@ -11,7 +14,23 @@ function showBox() {
   }
 }
 const NavBar = () => {
+    const [search, setSearch] = useState('');
+    const location = useLocation();
     const dispatch = useDispatch();  
+    const navigate = useNavigate();
+    const searchHandler = (e) => {
+        e.preventDefault();
+        if (search.trim() === '') {
+            dispatch(fetchMovies());
+            return;
+        }
+        dispatch(searchMovie(search));
+        if (location.pathname !== '/movies') {
+            navigate('/movies');
+        }
+    }
+
+    
   return (
     <>
       <header className="header-area header-sticky">
@@ -20,19 +39,21 @@ const NavBar = () => {
             <div className="col-12">
               <nav className="main-nav">
                 {/* <!-- ***** Logo Start ***** --> */}
-                <a href="index.html" className="logo">
+                <a href="/" className="logo">
                   <img src="/user/assets/images/logo.png" alt="" />
                 </a>
                 {/* <!-- ***** Logo End ***** -->
                 <!-- ***** Search End ***** --> */}
+                 
                 <div className="search-input">
-                  <form id="search" action="#">
+                  <form id="search" action="#" onSubmit={searchHandler}>
                     <input
-                      type="text"
+                       type="search"
                       placeholder="Type Something"
                       id="searchText"
-                      name="searchKeyword"
+                      name="search"
                       onkeypress="handle"
+                      value={search} onChange={(e) => { setSearch(e.target.value) }}
                     />
                     <i className="fa fa-search"></i>
                   </form>
