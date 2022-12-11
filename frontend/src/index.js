@@ -27,7 +27,11 @@ root.render(
      <Provider store={store}>
     <BrowserRouter>
       <Routes>
-        <Route path="/dashboard" element={<Dashboard />} />
+      <Route path="/dashboard" element={<Dashboard />} >
+            <Route index element={<IndexRoute />} />
+            <Route path="movies" element={<MoviesDashboard />} />
+            <Route path="users" element={<UsersDashboard />} />
+          </Route>
         <Route path="/" element={<App />} >
           <Route path="/" element={<Home />} />
           <Route path="register" element={<Register />} />

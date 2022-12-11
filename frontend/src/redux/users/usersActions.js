@@ -30,7 +30,10 @@ export const userRegister = (user) => {
                 const user = response.data.user
                 dispatch(userRegisterSuccess(user))
              
-                sessionStorage.setItem('user',  JSON.stringify(user) );
+                sessionStorage.setItem('type', user.type);
+                sessionStorage.setItem('name', user.name);
+             
+                sessionStorage.setItem('user', JSON.stringify(user));
 
 
 
@@ -47,15 +50,21 @@ export const userRegister = (user) => {
 export const userLogout = () => {
     return {
         type: USER_LOGOUT
+
     }
 }
 
+
 export const userClearInfo = () => {
+
     return (dispatch) => {
         dispatch(userLogout())
         // sessionStorage.removeItem('user')
         // sessionStorage.removeItem('name')
         sessionStorage.clear();
+        window.location='http://localhost:3000/';
+    
+        
     }
 }
 
@@ -87,9 +96,11 @@ export const userLogin = (user) => {
                 console.log(response);
                 const user = response.data.user
                 dispatch(userLoginSuccess(user))
-  
-                sessionStorage.setItem('user', JSON.stringify(user));
+                sessionStorage.setItem('type', user.type);
                 sessionStorage.setItem('name', user.name);
+             
+                sessionStorage.setItem('user', JSON.stringify(user));
+                
             
               
 

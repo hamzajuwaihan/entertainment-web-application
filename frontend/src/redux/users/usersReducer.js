@@ -31,6 +31,7 @@ const usersReducer = (state = initialState, action) => {
                 loading: false,
                 user: {},
                 error: ''
+
             }
         case USER_LOGIN_REQUEST:
             return {
