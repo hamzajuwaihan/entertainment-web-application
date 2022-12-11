@@ -1,41 +1,91 @@
+import './post.css';
+
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+
 
 function PostComment() {
+  const [post, setPost] = useState("");
+  const [hasError, setErrors] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+  const dispatch = useDispatch();
+  
+  const formHandler = (e) => {
+    e.preventDefault();
+
+   if(post===""){
+    setErrors(true);
+    setErrorMessage("Please fill all fields");
+   }else{
+    dispatch(
+      
+    );
+   }
+  };
     return (
         <>
-        
-<div>
+ 
 
-  {/* Main Body */}
-  <section>
-    <div className="container">
-      <div className="row">
-        <div className="col-sm-5 col-md-6 col-12 pb-4">
-          <h1>Comments</h1>
-          {/* <div className="comment mt-4 text-justify float-left">
-            <img src="https://i.imgur.com/yTFUilP.jpg" alt className="rounded-circle" width={40} height={40} />
-            <h4>Jhon Doe</h4>
-            <span>- 20 October, 2018</span>
-            <br />
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusamus numquam assumenda hic aliquam vero sequi velit molestias doloremque molestiae dicta?</p>
-          </div> */}
 
-        </div>
-        <div className="col-lg-4 col-md-5 col-sm-4 offset-md-1 offset-sm-1 col-12 mt-4">
-          <form id="algin-form">
-            <div className="form-group">
-              <h4>Leave a comment</h4>
-              <label htmlFor="message">Message</label>
-              <textarea name="msg" id msg cols={30} rows={5} className="form-control" style={{backgroundColor: 'black'}} defaultValue={""} />
+<div className="container bootstrap snippets bootdey">
+  <div className="row">
+    <div className="col-md-12">
+      <div className="blog-comment">
+        {/* <h3 className="text-success">Comments</h3> */}
+         
+        <div>
+  <form className="card card-sm" onSubmit={formHandler}>
+    <div className="card-body row no-gutters align-items-center">
+      <div className="col-auto">
+      
+        <i class="fa fa-comment" aria-hidden="true" style={{fontSize:"1.8rem" ,color:"#198754"}}></i>
+
+      </div>
+      {/*end of col*/}
+      <div className="col">
+        <input className="form-control form-control-lg form-control-borderless"    value={post}
+            onChange={(e) => setPost(e.target.value)} type="text" placeholder="" />
+      </div>
+      {/*end of col*/}
+      <div className="col-auto">
+        <button className="btn btn-lg btn-success" type="submit">Comment</button>
+      </div>
+      {/*end of col*/}
+    </div>
+  </form>
+</div><hr /> 
+        <ul className="comments">
+    
+          <li className="clearfix">
+            <img src="https://bootdey.com/img/Content/user_2.jpg" className="avatar" alt />
+            <div className="post-comments">
+              <p className="meta">Dec 19, 2014 <a href="#">JohnDoe</a> says : <i className="pull-right"><a href="#"><small>Reply</small></a></i></p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Etiam a sapien odio, sit amet
+              </p>
             </div>
-            <div className="form-group">
-              <button type="button" id="post" className="btn">Post </button>
-            </div>
-          </form>
-        </div>
+            <ul className="comments">
+              <li className="clearfix">
+                <img src="https://bootdey.com/img/Content/user_3.jpg" className="avatar" alt />
+                <div className="post-comments">
+                  <p className="meta">Dec 20, 2014 <a href="#">JohnDoe</a> says : <i className="pull-right"><a href="#"><small>Reply</small></a></i></p>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Etiam a sapien odio, sit amet
+                  </p>
+                </div>
+              </li>
+            </ul>
+          </li>
+        </ul>
       </div>
     </div>
-  </section>
+  </div>
 </div>
+
+
 
 
         </>
