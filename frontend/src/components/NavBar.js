@@ -1,43 +1,120 @@
-import React from 'react'
-import { Link, NavLink } from 'react-router-dom'
-
-function NavBar() {
-    return (
-        <nav class="navbar navbar-expand-lg navbar-light bg-dark pl-auto">
-
-            <Link class="navbar-brand pl-5 text-white" to="/dashboard" >DashBoard</Link>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav flex-row d-none d-md-flex mx-auto">
-
-
-                    <li class="nav-item me-3 me-lg-1 mx-5">
-                        <a class="nav-link text-white" href="#">
-                            <NavLink to={"/posts"}> <span><i class="fas fa-flag fa-lg px-2" style={{ color: '#f1c40f' }}></i>Posts </span></NavLink>
-                        </a>
-                    </li>
-
-                    <li class="nav-item me-3 me-lg-1 mx-3">
-                        <a class="nav-link text-white" href="#">
-                            <NavLink to={"/dashboard/movies"}><span> <i class="fas fa-film fa-lg px-2" style={{ color: '#a51890' }}></i> Movies</span></NavLink>
-                        </a>
-                    </li>
-
-
-                    <li class="nav-item me-3 me-lg-1">
-                        <a class="nav-link text-white" href="#">
-                            <NavLink to={"/dashboard/users"}><span> <i class="fas fa-user-friends fa-lg px-2" style={{ color: '#269ccf' }}></i>Users</span></NavLink>
-
-                        </a>
-                    </li>
-
-                </ul>
-            </div>
-            <button class="btn btn-danger" style={{ float: 'right', marginRight: '2vw' }}> logout</button>
-        </nav>
-    )
+import React from "react";
+import { NavLink } from "react-router-dom";
+import { useDispatch } from 'react-redux'
+import { userClearInfo } from "../redux/users/usersActions";
+function showBox() {
+    const status = document.getElementById("nav-box-minimize").style.display;
+    if (status === "none") {
+        document.getElementById("nav-box-minimize").style.display = "block";
+    } else {
+        document.getElementById("nav-box-minimize").style.display = "none";
+    }
 }
+const NavBar = () => {
+    const dispatch = useDispatch();
+    return (
+        <>
+            <header className="header-area header-sticky">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-12">
+                            <nav className="main-nav">
+                                {/* <!-- ***** Logo Start ***** --> */}
+                                <a href="index.html" className="logo">
+                                    <img src="/user/assets/images/logo.png" alt="" />
+                                </a>
+                                {/* <!-- ***** Logo End ***** -->
+                <!-- ***** Search End ***** --> */}
+                                <div className="search-input">
+                                    <form id="search" action="#">
+                                        <input
+                                            type="text"
+                                            placeholder="Type Something"
+                                            id="searchText"
+                                            name="searchKeyword"
+                                            onkeypress="handle"
+                                        />
+                                        <i className="fa fa-search"></i>
+                                    </form>
+                                </div>
+                                {/* <!-- ***** Search End ***** -->
+                <!-- ***** Menu Start ***** --> */}
+                                <ul className="nav" id="nav-box-minimize">
+                                    <li>
+                                        <NavLink to="/">Home</NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink to="register">Register</NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink to="/login">Log In</NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink to="/Browse">Browse</NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink to="/movies">Movies</NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink to="/Streams">Streams</NavLink>
+                                    </li>
 
-export default NavBar
+                                    {sessionStorage.length === 0 ? (
+                                        <>
+                                            <li className="nav-item">
+                                                <NavLink className="nav-link" to={"/register"}>
+                                                    Register
+                                                </NavLink>
+                                            </li>
+                                            <li className="nav-item">
+                                                <NavLink className="nav-link" to={"/login"}>
+                                                    login
+                                                </NavLink>
+                                            </li>
+                                        </>
+                                    ) : null}
+                                    {sessionStorage.length !== 0 ? (
+                                        <li className="nav-item dropdown">
+                                            <a
+                                                className="nav-link dropdown-toggle"
+                                                href="#"
+                                                role="button"
+                                                data-bs-toggle="dropdown"
+                                                aria-expanded="false"
+                                            >
+                                                {sessionStorage.getItem("name")}
+                                            </a>
+                                            <ul className="dropdown-menu">
+                                                <li>
+                                                    <NavLink className="dropdown-item" to="Profile">
+                                                        Profile
+                                                    </NavLink>
+                                                </li>
+                                                <li>
+                                                    <button
+                                                        className="dropdown-item"
+                                                        onClick={() => dispatch(userClearInfo())}
+                                                    >
+                                                        Logout
+                                                    </button>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    ) : null}
+
+                                    <li></li>
+                                </ul>
+                                <a className="menu-trigger" id="trigger" onClick={showBox}>
+                                    <span>Menu</span>
+                                </a>
+                                {/* <!-- ***** Menu End ***** --> */}
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </header>
+        </>
+    );
+};
+
+export default NavBar;
