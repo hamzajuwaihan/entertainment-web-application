@@ -3,6 +3,7 @@ import React, { useRef, useState } from 'react'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { useDispatch } from 'react-redux';
+import { deleteUser, editUser } from '../../redux/users/usersActions';
 
 function SingleUser({ id, name, type, email }) {
     const [show, setShow] = useState(false);
@@ -11,6 +12,7 @@ function SingleUser({ id, name, type, email }) {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     const [user, setUser] = useState({
+        id: id,
         name: name,
         type: type,
         email: email
@@ -20,6 +22,17 @@ function SingleUser({ id, name, type, email }) {
     }
     const handleSubmit = (e) => {
         e.preventDefault();
+        dispatch(editUser({
+            id: user.id,
+            name: user.name,
+            type: user.type,
+            email: user.email
+        }));
+        console.log(user)
+        close.current.click();
+    }
+    const handleDelete = () => {
+        dispatch(deleteUser(id));
     }
     return (
         <>
@@ -70,7 +83,13 @@ function SingleUser({ id, name, type, email }) {
                         </form>
                     </Modal>
                 </td>
+                <td>
+                    <Button variant="danger" onClick={(id)=> handleDelete(id)}>
+                        Delete
+                    </Button>
+                </td>
             </tr>
+
         </>
     )
 }

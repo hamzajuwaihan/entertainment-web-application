@@ -1,6 +1,6 @@
 import axios from "axios"
 
-import { USER_LOGIN_FAILURE, USER_LOGIN_REQUEST, USER_LOGIN_SUCCESS, USER_LOGOUT, USER_REGISTER_FAILURE, USER_REGISTER_REQUEST, USER_REGISTER_SUCCESS } from "./usersTypes"
+import {  EDIT_USER_REQUEST, GET_ALL_USERS_FAILURE, GET_ALL_USERS_REQUEST, GET_ALL_USERS_SUCCESS, USER_LOGIN_FAILURE, USER_LOGIN_REQUEST, USER_LOGIN_SUCCESS, USER_LOGOUT, USER_REGISTER_FAILURE, USER_REGISTER_REQUEST, USER_REGISTER_SUCCESS } from "./usersTypes"
 
 // users Actions creators section 
 export const userRegisterRequest = () => {
@@ -101,10 +101,6 @@ export const userLogin = (user) => {
                 sessionStorage.setItem('name', user.name);
                 sessionStorage.setItem('id', user.id);
                 sessionStorage.setItem('user', JSON.stringify(user));
-
-
-
-
             })
             .catch(error => {
 
@@ -116,3 +112,77 @@ export const userLogin = (user) => {
     }
 }
 
+export const getAllUsersReqest = () => {
+
+    return {
+        type: GET_ALL_USERS_REQUEST
+    }
+}
+export const getAllUsersSuccess = (users) => {
+    return {
+        type: GET_ALL_USERS_SUCCESS,
+        payload: users
+    }
+}
+export const getAllUsersFailure = (error) => {
+    return {
+        type: GET_ALL_USERS_FAILURE,
+        payload: error
+    }
+}
+export const getAllUsers = () => {
+    return (dispatch) => {
+        dispatch(getAllUsersReqest())
+        axios.get('http://127.0.0.1:8000/api/users').then(response => {
+            const users = response.data
+
+            dispatch(getAllUsersSuccess(users))
+        }
+        ).catch(error => {
+            const errorMsg = error.message
+            dispatch(getAllUsersFailure(errorMsg))
+        }
+        )
+    }
+}
+
+export const editUserRequest = () => {
+    return {
+        type: EDIT_USER_REQUEST
+    }
+}
+
+
+
+export const editUser = (user) => {
+    return (dispatch) => {
+        dispatch(editUserRequest())
+        axios.put('http://localhost:8000/api/users/' + user.id, user).then(response => {
+            const user = response.data
+            dispatch(getAllUsersSuccess(user))
+
+        }
+        ).catch(error => {
+            const errorMsg = error.message
+            dispatch(getAllUsersFailure(errorMsg))
+
+        })
+    }
+}
+
+
+// delete user 
+export const deleteUser = (id) => {
+    return (dispatch) => {
+        axios.delete('http://localhost:8000/api/users/' + id).then(response => {
+            const user = response.data
+            dispatch(getAllUsersSuccess(user))
+
+        }
+        ).catch(error => {
+            const errorMsg = error.message
+            dispatch(getAllUsersFailure(errorMsg))
+
+        })
+    }
+}

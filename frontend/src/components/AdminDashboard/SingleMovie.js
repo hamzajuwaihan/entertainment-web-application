@@ -140,7 +140,7 @@ function SingleMovie({ id, image, title, genre, overview, release_date, runtime,
                     </form>
                 </Modal>
             </td>
-            <td><button className="btn btn-danger">Delete</button></td>
+
         </tr>
     )
 }
