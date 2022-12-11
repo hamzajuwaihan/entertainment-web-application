@@ -1,4 +1,3 @@
-
 import '../registerLogin.css';
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
@@ -44,13 +43,21 @@ function Login() {
        
           }else{
             dispatch(userLogin({email,password}));
-            if(sessionStorage.length != 0){
+                    const type=sessionStorage.getItem("type");
+                    console.log(type)
+            if(sessionStorage.length != 0 ){
+              
+              if(type==="user" && type !=""){
                 setEmail('');
                 setPassword('');
-                navigate("/")
-            }else{
+                window.location='http://localhost:3000/';
+              }else{
+              setEmail('');
+                setPassword('');
+                navigate("/dashboard")
               
-            }
+            } 
+          }
 
     }
 

@@ -1,5 +1,5 @@
 import axios from "axios"
-import { useNavigate } from "react-router-dom"
+
 import { USER_LOGIN_FAILURE, USER_LOGIN_REQUEST, USER_LOGIN_SUCCESS, USER_LOGOUT, USER_REGISTER_FAILURE, USER_REGISTER_REQUEST, USER_REGISTER_SUCCESS } from "./usersTypes"
 
 // users Actions creators section 
@@ -29,10 +29,11 @@ export const userRegister = (user) => {
             .then(response => {
                 const user = response.data.user
                 dispatch(userRegisterSuccess(user))
-             
+
                 sessionStorage.setItem('type', user.type);
                 sessionStorage.setItem('name', user.name);
-             
+                sessionStorage.setItem('id', user.id);
+
                 sessionStorage.setItem('user', JSON.stringify(user));
 
 
@@ -62,9 +63,9 @@ export const userClearInfo = () => {
         // sessionStorage.removeItem('user')
         // sessionStorage.removeItem('name')
         sessionStorage.clear();
-        window.location='http://localhost:3000/';
-    
-        
+        window.location = 'http://localhost:3000/';
+
+
     }
 }
 
@@ -98,15 +99,15 @@ export const userLogin = (user) => {
                 dispatch(userLoginSuccess(user))
                 sessionStorage.setItem('type', user.type);
                 sessionStorage.setItem('name', user.name);
-             
+                sessionStorage.setItem('id', user.id);
                 sessionStorage.setItem('user', JSON.stringify(user));
-                
-            
-              
+
+
+
 
             })
             .catch(error => {
-               
+
                 const errorMsg = 'User Not found'
                 dispatch(userLoginFailure(errorMsg))
                 console.log(errorMsg);
