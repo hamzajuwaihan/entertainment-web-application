@@ -64,14 +64,12 @@ function NavBar() {
                                                    {sessionStorage.getItem("name")}
                                                </a>
                                                <ul className="dropdown-menu">
-                                               <li><NavLink to="Profile">Profile</NavLink></li>
+                                               <li><NavLink className="dropdown-item" to="Profile">Profile</NavLink></li>
                                                    <li><button className="dropdown-item" onClick={() => dispatch(userClearInfo())}>Logout</button></li>
            
                                                </ul>
                                            </li>
 
-                                           
-                                           
                                            
                                            ) : null
                                        }
