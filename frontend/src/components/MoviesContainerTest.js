@@ -35,13 +35,13 @@ function MoviesContainerTest() {
                 <div className="row">
                     <div className="col-lg-12">
                         <div className="heading-section">
-                            <h4><em>Most Popular</em> Right Now</h4>
+                            <h4 class>Most Popular Right Now</h4>
                         </div>
                         <div className="row">
                             {currentPosts.length > 0 ? currentPosts.map((movie) => {
                                 return (
 
-                                    <SingleMovieTest title={movie.title} rating={movie.rating} id={movie.id} key={movie.id} />
+                                    <SingleMovieTest title={movie.title} rating={movie.rating} id={movie.id} key={movie.id}  release_date={movie.release_date} />
 
                                 )
                             }) : null}
