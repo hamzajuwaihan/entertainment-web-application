@@ -1,7 +1,10 @@
 import React from 'react'
+import { useDispatch } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom'
+import { userClearInfo } from '../../redux/users/usersActions'
 
 function NavBar() {
+    const dispatch = useDispatch();
     return (
         <nav class="navbar navbar-expand-lg navbar-light bg-dark pl-auto">
 
@@ -35,7 +38,7 @@ function NavBar() {
 
                 </ul>
             </div>
-            <button class="btn btn-danger" style={{ float: 'right', marginRight: '2vw' }}> logout</button>
+            <button type="button"  onClick={() => dispatch(userClearInfo())} class="btn btn-danger" style={{ float: 'right', marginRight: '2vw' }}> logout</button>
         </nav>
     )
 }

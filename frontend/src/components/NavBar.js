@@ -38,7 +38,35 @@ const NavBar = () => {
                                     <li><NavLink to="/Browse">Browse</NavLink></li>
                                     <li><NavLink to="/movies">Movies</NavLink></li>
                                     <li><NavLink to="/Streams">Streams</NavLink></li>
-                                    <li><NavLink to="Profile">Profile <img src="/user/assets/images/profile-header.jpg" alt="" /></NavLink></li>
+
+                                    {  sessionStorage.length === 0 ? (
+                                        <>
+                                        <li className="nav-item">
+                                        <NavLink className="nav-link" to={'/register'}>Register</NavLink>
+                                       </li>
+                                       <li className="nav-item">
+                                           <NavLink className="nav-link" to={'/login'}>login</NavLink>
+                                       </li></>
+                                       ) : null}
+                                       {
+                                        sessionStorage.length !== 0 ? (<li className="nav-item dropdown">
+                                               <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                   {sessionStorage.getItem("name")}
+                                               </a>
+                                               <ul className="dropdown-menu">
+                                               <li><NavLink className="dropdown-item" to="Profile">Profile</NavLink></li>
+                                                   <li><button className="dropdown-item" onClick={() => dispatch(userClearInfo())}>Logout</button></li>
+           
+                                               </ul>
+                                           </li>
+
+                                           
+                                           ) : null
+                                       }
+                                 
+
+                                      <li></li>
+                                   
                                 </ul>
                                 <a className='menu-trigger' id='trigger' onClick={showBox}>
                                     <span>Menu</span>
