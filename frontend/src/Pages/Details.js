@@ -4,6 +4,7 @@ import DetailsStart from '../components/Details/DetailsStart'
 import OtherStart from '../components/Details/OtherStart'
 import { useParams } from 'react-router';
 import axios from 'axios';
+import PostComment from '../components/Details/PostComment';
 function Details() {
   const { movieId } = useParams();
   const [movie, setMovie] = React.useState({});
@@ -17,8 +18,9 @@ function Details() {
   return (
     <>
       <Featured/>
-      <DetailsStart title={movie.title} />
+      <DetailsStart title={movie.title} rating={movie.rating} overview={movie.overview} genre={movie.genre} runtime={movie.runtime} popularity={movie.popularity} release_date={movie.release_date} />
       <OtherStart />
+      <PostComment/>
     </>
   )
 }
