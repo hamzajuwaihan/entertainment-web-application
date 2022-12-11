@@ -30,4 +30,4 @@ Route::get('movies/search/{title}', 'App\Http\Controllers\MovieController@search
 Route::get('movie/{id}', ShowMovie::class);
 Route::post('movies/file/{id}', ProfilePicture::class);
 Route::resource('users', Users::class);
-
+Route::resource('post', PostController::class);

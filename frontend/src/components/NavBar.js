@@ -1,10 +1,5 @@
 import React from 'react'
-import { NavLink ,useLocation, useNavigate } from 'react-router-dom';
-import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-
-import { userClearInfo } from '../redux/users/usersActions';
-
+import { NavLink } from 'react-router-dom';
 function showBox() {
     const status = document.getElementById("nav-box-minimize").style.display;
     if (status === "none") {
@@ -14,15 +9,7 @@ function showBox() {
         document.getElementById("nav-box-minimize").style.display = "none";
     }
 }
-
-
-function NavBar() {
-    const [search, setSearch] = useState('');
-    const dispatch = useDispatch();
-    const user = useSelector(state => state.user.user);
-    const location = useLocation();
-    const navigate = useNavigate();
-
+const NavBar = () => {
     return (
         <>
             <header className="header-area header-sticky">
@@ -46,9 +33,12 @@ function NavBar() {
                 <!-- ***** Menu Start ***** --> */}
                                 <ul className="nav" id='nav-box-minimize' >
                                     <li><NavLink to="/" >Home</NavLink></li>
+                                    <li><NavLink to="register">Register</NavLink></li>
+                                    <li><NavLink to="/login">Log In</NavLink></li>
                                     <li><NavLink to="/Browse">Browse</NavLink></li>
                                     <li><NavLink to="/movies">Movies</NavLink></li>
                                     <li><NavLink to="/Streams">Streams</NavLink></li>
+
                                     {  sessionStorage.length === 0 ? (
                                         <>
                                         <li className="nav-item">
