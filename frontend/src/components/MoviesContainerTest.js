@@ -46,19 +46,17 @@ function MoviesContainerTest() {
                                 )
                             }) : null}
                             <div className="col-lg-12">
-                                <div className="main-button">
-                                    <a href="browse.html">Discover Popular</a>
-                                </div>
+                                
                             </div>
                         </div>
                     </div>
                 </div>
 
             </div>
-            <ul className="pagination justify-content-center" style={{ marginBottom: '30px' }}>
+            <ul className="pagination justify-content-center" style={{ marginTop: '10vh' }}>
                 {pageNumbers.map((number) => (
-                    <li key={number} className="page-item">
-                        <button onClick={() => paginate(number)} className="page-link">
+                    <li key={number} className="page-item" >
+                        <button onClick={() => paginate(number)} className="page-link" style={{backgroundColor:'#ec6090', color:'white'}}>
                             {number}
                         </button>
                     </li>
