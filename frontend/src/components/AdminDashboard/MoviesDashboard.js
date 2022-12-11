@@ -18,7 +18,7 @@ function MoviesDashboard() {
                                 <th scope="col">Image</th>
                                 <th scope="col">Title</th>
                                 <th scope="col">edit</th>
-                                <th scope="col">delete</th>
+                                
                             </tr>
                         </thead>
                         <tbody>

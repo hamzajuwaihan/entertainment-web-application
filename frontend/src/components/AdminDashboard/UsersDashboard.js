@@ -1,15 +1,15 @@
-import axios from 'axios'
+
 import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { getAllUsers } from '../../redux/users/usersActions';
+import SingleUser from './SingleUser';
 
 function UsersDashboard() {
+    const allUsers = useSelector(state => state.user.users);
     const [users, setUsers] = useState([]);
+    const dispatch = useDispatch();
     useEffect(() => {
-        axios.get('http://localhost:8000/api/users').then((res) => {
-            setUsers(res.data);
-        }).catch((err) => {
-            console.log(err);
-        })
-
+        dispatch(getAllUsers());
     }, []);
     return (
         <>
@@ -18,20 +18,17 @@ function UsersDashboard() {
                     <table class="table table-striped table-dark mt-5">
                         <thead>
                             <tr>
-                                <th scope="col">Image</th>
-                                <th scope="col">Title</th>
+                                <th scope="col">Id</th>
+                                <th scope="col">name</th>
+                                <th scope="col">type</th>
+                                <th scope="col">email</th>
                                 <th scope="col">edit</th>
                                 <th scope="col">delete</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {users.map(user => (
-                                <tr>
-                                    <th scope="row"><img src={user.image} alt="" /></th>
-                                    <td>{user.title}</td>
-                                    <td><button className="btn btn-primary">Edit</button></td>
-                                    <td><button className="btn btn-danger">Delete</button></td>
-                                </tr>
+                            {allUsers.map(user => (
+                                <SingleUser key={user.id} {...user} />
                             ))}
                         </tbody>
                     </table>

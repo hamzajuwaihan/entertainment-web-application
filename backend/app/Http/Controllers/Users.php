@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class Users extends Controller
 {
@@ -67,9 +68,18 @@ class Users extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        DB::table('users')
+                ->where('id', $request->id)
+                ->update([
+                    'name' => $request->name,
+                    'email' => $request->email,
+                    'type' => $request->type,
+                ]);
+        
+        return response()->json(User::all());
+        
     }
 
     /**
@@ -80,6 +90,8 @@ class Users extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::find($id);
+        $user->delete();
+        return response()->json(User::all());
     }
 }

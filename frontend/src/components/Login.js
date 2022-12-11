@@ -50,7 +50,7 @@ function Login() {
               if(type==="user" && type !=""){
                 setEmail('');
                 setPassword('');
-                navigate("/")
+                window.location='http://localhost:3000/';
               }else{
               setEmail('');
                 setPassword('');
