@@ -19,6 +19,10 @@ class MovieController extends Controller
     {
         return response()->json(Movie::all());
     }
+    public function view()
+    {
+        return response()->json(Movie::orderBy('id', 'desc')->paginate(4));
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -79,8 +83,8 @@ class MovieController extends Controller
     {
         // movie in the parameter is for id
         $movie = Movie::find($movie);
-        
-        
+
+
     }
 
     /**
@@ -99,7 +103,7 @@ class MovieController extends Controller
     {
         return response()->json(Movie::query()
             ->where('title', 'LIKE', "%{$searchTerm}%")
-            ->orWhere('content', 'LIKE', "%{$searchTerm}%")
+            ->orWhere('genre', 'LIKE', "%{$searchTerm}%")
             ->get());
     }
 }
