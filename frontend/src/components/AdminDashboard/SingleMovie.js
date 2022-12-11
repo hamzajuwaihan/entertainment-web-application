@@ -2,11 +2,15 @@ import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import { useDispatch } from 'react-redux';
+import { fetchMovies } from '../../redux/movies/moviesActions';
 function SingleMovie({ id, image, title, genre, overview, release_date, runtime, poster, popularity, rating }) {
     const [show, setShow] = useState(false);
     const close = useRef(null);
+    let dispatch = useDispatch();
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+
     const [movie, setMovie] = useState({
         image: image,
         title: title,
@@ -27,6 +31,7 @@ function SingleMovie({ id, image, title, genre, overview, release_date, runtime,
     const handleSubmit = (e) => {
         e.preventDefault();
         const fileInput = document.querySelector(`#image-upload${id}`);
+        const posterInput = document.querySelector(`#poster-upload${id}`);
         const formData = new FormData();
         formData.append('image', fileInput.files[0]);
         formData.append('title', movie.title);
@@ -37,8 +42,9 @@ function SingleMovie({ id, image, title, genre, overview, release_date, runtime,
         formData.append('poster', movie.poster);
         formData.append('popularity', movie.popularity);
         formData.append('rating', movie.rating);
-
-        axios.put(`http://localhost:8000/api/movies/${id}`, formData,
+        formData.append('poster', posterInput.files[0]);
+        formData.append('id', id);
+        axios.post(`http://localhost:8000/api/movies/file/${id}`, formData,
             {
                 onUploadProgress: progressEvent => {
                     console.log('Upload Progress: ' + Math.round(progressEvent.loaded / progressEvent.total * 100) + '%')
@@ -53,15 +59,21 @@ function SingleMovie({ id, image, title, genre, overview, release_date, runtime,
             .catch(err => {
                 console.log(err)
             })
+        dispatch(fetchMovies());
         close.current.click();
+
     }
     useEffect(() => {
         document.title = 'Movies Dashboard';
+
     }, []);
     return (
 
         <tr>
-            <th scope="row"><img src={image} alt="" /></th>
+            <th scope="row"><img src={`http://localhost:8000/images/${image}`} alt="" style={{ 
+                width: '100px',
+                height: '100px',
+             }}/></th>
             <td>{title}</td>
             <td>
                 <Button variant="primary" onClick={handleShow}>
@@ -76,16 +88,16 @@ function SingleMovie({ id, image, title, genre, overview, release_date, runtime,
                     <Modal.Header closeButton>
                         <Modal.Title>{title}</Modal.Title>
                     </Modal.Header>
-                    <form onSubmit={handleSubmit}  encType="multipart/form-data">
+                    <form onSubmit={handleSubmit} encType="multipart/form-data">
                         <Modal.Body>
 
                             <div className="form-group">
                                 <label htmlFor="Title">Title</label>
                                 <input type="text" className="form-control" id="Title" placeholder="Enter Title" name="title" onChange={handleChange} value={movie.title} />
                             </div>
-                            <div class="mb-3">
-                                <label htmlFor="image" class="form-label">Image</label>
-                                <input class="form-control" type="file" name="image" onChange={handleImage} id={`image-upload${id}`} />
+                            <div className="mb-3">
+                                <label htmlFor="image" className="form-label">Image</label>
+                                <input className="form-control" type="file" name="image" onChange={handleImage} id={`image-upload${id}`} />
                             </div>
                             <div className="form-group">
                                 <label htmlFor="genre">genre</label>
@@ -99,9 +111,9 @@ function SingleMovie({ id, image, title, genre, overview, release_date, runtime,
                                 <label htmlFor="popularity">Popularity</label>
                                 <input type="number" className="form-control" id="popularity" placeholder="popularity" name="popularity" onChange={handleChange} value={movie.popularity} />
                             </div>
-                            <div className="form-group">
-                                <label htmlFor="poster">Poster</label>
-                                <input type="text" className="form-control" id="poster" placeholder="poster" name="poster" onChange={handleChange} value={movie.poster} />
+                            <div className="mb-3">
+                                <label htmlFor="poster" className="form-label">Poster</label>
+                                <input className="form-control" type="file" name="poster" onChange={handleImage} id={`poster-upload${id}`} />
                             </div>
                             <div className="form-group">
                                 <label htmlFor="rating">Rating</label>

@@ -79,7 +79,6 @@ class MovieController extends Controller
     {
         // movie in the parameter is for id
         $movie = Movie::find($movie);
-        return $request->getContent();
         
         
     }

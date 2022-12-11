@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import SingleMovie from './SingleMovie'
 
 function MoviesDashboard() {
     const { movies } = useSelector(state => state.movies)
-    console.log(movies)
+    const [allMovies, setAllMovies] = useState(movies);
+    useEffect(() => {
+        setAllMovies(movies)
+    }, []);
     return (
         <>
             <div className="content-wrapper container">
@@ -19,8 +22,8 @@ function MoviesDashboard() {
                             </tr>
                         </thead>
                         <tbody>
-                            {movies.map(movie => (
-                               <SingleMovie key={movie.id} {...movie} />
+                            {allMovies.map(movie => (
+                                <SingleMovie key={movie.id} {...movie} />
                             ))}
                         </tbody>
                     </table>
