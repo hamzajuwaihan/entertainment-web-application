@@ -43,13 +43,21 @@ function Login() {
        
           }else{
             dispatch(userLogin({email,password}));
-            if(sessionStorage.length != 0){
+                    const type=sessionStorage.getItem("type");
+                    console.log(type)
+            if(sessionStorage.length != 0 ){
+              
+              if(type==="user" && type !=""){
                 setEmail('');
                 setPassword('');
                 navigate("/")
-            }else{
+              }else{
+              setEmail('');
+                setPassword('');
+                navigate("/dashboard")
               
-            }
+            } 
+          }
 
     }
 
