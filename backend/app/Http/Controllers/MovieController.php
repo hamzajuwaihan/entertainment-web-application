@@ -55,6 +55,7 @@ class MovieController extends Controller
      * @param  \App\Models\movie  $movie
      * @return \Illuminate\Http\Response
      */
+    
     public function show(Movie $movie)
     {
         //

@@ -1,4 +1,6 @@
 <?php
+
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\PostController;
@@ -29,10 +31,11 @@ Route::resource('register', RegisterController::class);
 Route::post('login', LoginController::class);
 Route::resource('movies', 'App\Http\Controllers\MovieController');
 Route::resource('topmovies', 'App\Http\Controllers\TopRatedController');
-Route::resource('movies/view', 'App\Http\Controllers\MovieController@view');
+
 Route::get('movies/search/{title}', 'App\Http\Controllers\MovieController@search');
 Route::get('movie/{id}', ShowMovie::class);
 Route::post('movies/file/{id}', ProfilePicture::class);
 Route::resource('users', Users::class);
 Route::resource('post', PostController::class);
 Route::resource('favourite', FavouriteController::class);
+Route::resource('comment', CommentController::class);
