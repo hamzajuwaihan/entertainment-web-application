@@ -18,10 +18,11 @@ class MovieController extends Controller
     public function index()
     {
         return response()->json(Movie::all());
+        // return response()->json(Movie::orderBy('rating', 'DESC')->get());
     }
     public function view()
     {
-        return response()->json(Movie::orderBy('id', 'desc')->paginate(4));
+        return response()->json(Movie::orderBy('rating', 'DESC')->get());
     }
 
     /**
