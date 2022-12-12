@@ -8,7 +8,7 @@ import Dashboard from './components/Dashboard';
 import Home from './Pages/Home';
 import Register from './components/Register';
 import Login from './components/Login';
-import Browse from './Pages/Browse';
+// import Browse from './Pages/Browse';
 import Details from './Pages/Details';
 import Streams from './Pages/Streams';
 import Profile from './Pages/Profile';
@@ -36,7 +36,7 @@ root.render(
           <Route path="/" element={<Home />} />
           <Route path="register" element={<Register />} />
           <Route path="login" element={<Login />} />
-          <Route path="Browse" element={<Browse />} />
+          {/* <Route path="Browse" element={<Browse />} /> */}
           <Route path="About" element={<About />} />
           <Route path="Streams" element={<Streams />} />
           <Route path="Profile" element={<Profile />} />
