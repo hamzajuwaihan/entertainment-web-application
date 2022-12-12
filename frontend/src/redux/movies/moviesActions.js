@@ -1,5 +1,6 @@
 import axios from 'axios';
-import { FETCH_MOVIES_REQUEST, FETCH_MOVIES_FAILURE, FETCH_MOVIES_SUCCESS, DELETE_MOVIE_REQUEST, DELETE_MOVIE_SUCCESS, DELETE_MOVIE_FAILURE, ADD_MOVIE_REQUEST, ADD_MOVIE_SUCCESS, ADD_MOVIE_FAILURE, SEARCH_MOVIE_REQUEST, UPDATE_MOVIE_REQUEST } from "./moviesType";
+import { FETCH_MOVIES_REQUEST, FETCH_MOVIES_FAILURE, FETCH_MOVIES_SUCCESS, DELETE_MOVIE_REQUEST, DELETE_MOVIE_SUCCESS, DELETE_MOVIE_FAILURE, ADD_MOVIE_REQUEST, ADD_MOVIE_SUCCESS, ADD_MOVIE_FAILURE, SEARCH_MOVIE_REQUEST, UPDATE_MOVIE_REQUEST
+    ,VIEW_MOVIES_REQUEST,VIEW_MOVIES_SUCCESS,VIEW_MOVIES_FAILURE } from "./moviesType";
 
 
 // ? FETCH MOVIES ACTIONS SECTION
@@ -38,8 +39,29 @@ export function fetchMoviesFailure(error) {
         payload: error
     }
 }
-
 // ? END OF FETCH BLOGS ACTIONS SECTION
+// TOP RATED MOVIE
+export function viewMoviesRequest() {
+    return {
+        type: VIEW_MOVIES_REQUEST
+    }
+}
+
+export function viewMoviesSuccess(movies) {
+    return {
+        type: VIEW_MOVIES_SUCCESS,
+        payload: movies
+    }
+}
+
+export function viewMoviesFailure(error) {
+    return {
+        type: VIEW_MOVIES_FAILURE,
+        payload: error
+    }
+}
+
+
 
 
 // ! DELETE BLOG ACTIONS SECTION
@@ -128,6 +150,21 @@ export const searchMovie = (search) => {
             })
             .catch(error => {
                 dispatch(fetchMoviesFailure(error.message));
+            })
+    }
+}
+
+export const viewMovies=(view)=>{
+    return (dispatch) => {
+        dispatch(viewMoviesRequest());
+        axios.get('http://127.0.0.1:8000/api/topmovies')
+            .then(response => {
+                const movies = response.data;
+                dispatch(viewMoviesSuccess(movies));
+
+            })
+            .catch(error => {
+                dispatch(viewMoviesFailure(error.message));
             })
     }
 }

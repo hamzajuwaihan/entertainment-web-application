@@ -23,6 +23,7 @@ return new class extends Migration
             $table->date('release_date');
             $table->integer('runtime');
             $table->decimal('rating');
+            $table->string('image');
             $table->timestamps();
         });
     }
