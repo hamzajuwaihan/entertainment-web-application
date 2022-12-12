@@ -8,7 +8,7 @@ function MoviesContainerTest() {
     const movies = useSelector(state => state.movies);
     const dispatch = useDispatch();
     const [currentPage, setCurrentPage] = useState(1);
-    const [postsPerPage] = useState(12);
+    const [postsPerPage] = useState(8);
     // Get current posts
     const indexOfLastPost = currentPage * postsPerPage;
     const indexOfFirstPost = indexOfLastPost - postsPerPage;
@@ -42,7 +42,7 @@ function MoviesContainerTest() {
                             {currentPosts.length > 0 ? currentPosts.map((movie) => {
                                 return (
 
-                                    <SingleMovieTest title={movie.title} rating={movie.rating} id={movie.id} key={movie.id}  release_date={movie.release_date} />
+                                    <SingleMovieTest title={movie.title} rating={movie.rating} image={movie.image} id={movie.id} key={movie.id}  release_date={movie.release_date} />
 
                                 )
                             }) : null}

@@ -26,6 +26,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::resource('register', RegisterController::class);
 Route::post('login', LoginController::class);
 Route::resource('movies', 'App\Http\Controllers\MovieController');
+Route::resource('topmovies', 'App\Http\Controllers\TopRatedController');
+Route::resource('movies/view', 'App\Http\Controllers\MovieController@view');
 Route::get('movies/search/{title}', 'App\Http\Controllers\MovieController@search');
 Route::get('movie/{id}', ShowMovie::class);
 Route::post('movies/file/{id}', ProfilePicture::class);
