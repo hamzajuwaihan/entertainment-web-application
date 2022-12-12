@@ -12,7 +12,7 @@ var release = release_date.split('-')
       <div className="col-lg-3 col-sm-6 mt-4" >
         <div className="item">
           <div className="thumb">
-            <img src={`./images/${image}`} alt ="aaaaa" style={{height:"300px"}} />
+            <img src={`http://localhost:8000/images/${image}`} alt ="aaaaa" style={{height:"300px"}} />
             <div className="hover-effect">
               <div className="content">
                 <ul>

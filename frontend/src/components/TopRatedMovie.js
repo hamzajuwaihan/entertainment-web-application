@@ -10,7 +10,7 @@ function TopRatedMovie({ id, title, rating, image , release_date,genre}) {
                     
                             <div className="col-lg-4 col-sm-6">
                                 <div className="item" >
-                                   <Link to={`/movie/${id}`} > <img style={{height:"300px"}}  src={`./images/${image}`} alt=""/></Link>
+                                   <Link to={`/movie/${id}`} > <img style={{height:"300px"}}  src={`http://localhost:8000/images/${image}`} alt=""/></Link>
                                    <h4>{title}<br/><span>{genre}</span></h4>
                                         <ul>
                                             <li><i className="fa fa-star"></i> {rating}</li>
