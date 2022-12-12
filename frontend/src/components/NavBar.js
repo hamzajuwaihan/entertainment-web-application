@@ -65,12 +65,12 @@ const NavBar = () => {
                         <NavLink to="/">Home</NavLink>
                     </li>
 
-                    <li>
+                    {/* <li>
                         <NavLink to="/Browse">Browse</NavLink>
-                    </li>
-                    <li>
+                    </li> */}
+                    {/* <li>
                         <NavLink to="/movies">Movies</NavLink>
-                    </li>
+                    </li> */}
                     <li>
                         <NavLink to="/Streams">Streams</NavLink>
                     </li>

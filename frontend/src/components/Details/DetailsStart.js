@@ -1,4 +1,5 @@
 import React from 'react'
+import AddToFavourite from './Favourite/AddToFavourite'
 
 function DetailsStart({title ,rating,overview,genre,runtime,popularity,release_date}) {
   return (
@@ -18,18 +19,20 @@ function DetailsStart({title ,rating,overview,genre,runtime,popularity,release_d
                 <span>{genre}</span>
               </div>
               <ul className='mt-3'>
+                {/* <li><i className="fa fa-heart" /> Add To Favourite </li><br/> */}
                 <li><i className="fa fa-star" />Rating : {rating}</li><br/>
-                <li><i className="fa fa-download" /> Runtime : {runtime}min</li><br/>
+                <li><i className="fa fa-clock" /> Runtime : {runtime}min</li><br/>
                 <li><i className="fa fa-server" /> Popularity : {popularity}</li><br/>
                 <li><i className="fa fa-gamepad" /> Release Date : {release_date}</li>
-                
-              </ul>
+                  
+              </ul><AddToFavourite/>
             </div>
           </div>
           <div className="col-lg-6">
             <div className="right-info h-100">
               <h3>overview</h3>
               <p>{overview}</p>
+            
               {/* <ul>
                 <li><i className="fa fa-star" /> 4.8</li>
                 <li><i className="fa fa-download" /> 2.3M</li>
