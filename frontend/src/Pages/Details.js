@@ -17,10 +17,11 @@ function Details() {
   }, []);
   return (
     <>
+
       <Featured image={movie.image} poster={movie.poster}/>
       <DetailsStart title={movie.title} rating={movie.rating} overview={movie.overview} genre={movie.genre} runtime={movie.runtime} popularity={movie.popularity} release_date={movie.release_date} />
       <OtherStart />
-      <PostComment/>
+      <PostComment />
     </>
   )
 }
