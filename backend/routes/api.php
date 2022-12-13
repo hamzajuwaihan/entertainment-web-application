@@ -39,3 +39,4 @@ Route::resource('users', Users::class);
 Route::resource('post', PostController::class);
 Route::resource('favourite', FavouriteController::class);
 Route::resource('comment', CommentController::class);
+Route::resource('latestMovie', 'App\Http\Controllers\LatestMovieController');
