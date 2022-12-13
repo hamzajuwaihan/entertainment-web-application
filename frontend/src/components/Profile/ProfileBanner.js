@@ -11,11 +11,11 @@ function ProfileBanner() {
         </div>
         <div className="col-lg-4 align-self-center">
           <div className="main-info header-text">
-            <span>Offline</span>
+            {/* <span>Offline</span> */}
             <h4>Alan Smithee</h4>
             <p>You Haven't Gone Live yet. Go Live By Touching The Button Below.</p>
             <div className="main-border-button">
-              <a href="#">Start Live Stream</a>
+              <a href="#">Edit</a>
             </div>
           </div>
         </div>
