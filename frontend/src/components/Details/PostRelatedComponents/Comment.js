@@ -26,7 +26,7 @@ const time = current.toLocaleTimeString("en-US", {
                                     {user.name}
                                     <div className="text-dark ms-2 text-white">{comment}</div>
                                 </h6>
-                                <p className="mb-0">{time},{date} </p>
+                                <p className="mb-0"> published on {time} </p>
                              
                             </div>
 

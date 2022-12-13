@@ -28,6 +28,15 @@ function AddToFavourite() {
         })
         setFavourite({ ...favourite});
     }
+    const x =document.getElementById("box");
+    const changColor=(e)=>{
+        if (x.style.color==='white'){
+            x.style.color='red'
+         }else {
+            x.style.color='white'}
+  
+    
+    }
 
     return (
         <>
@@ -43,10 +52,16 @@ function AddToFavourite() {
                                         style={{ background: "#fff" }} value={post.text} name="text" onChange={(e)=> handleChange(e)}></textarea>
                                 </div> */}
                             </div>
-                            <div className="float-end mt-2 pt-1">
+                            <button type="submit" className="btn me-2 btn-lg" style={{fontSize:"30px"}} >
+                          <i id="box"  style={{color:"white", cursor:"pointer" }} className="fa fa-heart  hundrad" onClick={changColor} />
+                           </button> 
+                            {/* <div classname="float-end mt-2 pt-1 ">
+                  
+
+                              
                                 <button type="submit" className="btn btn-primary me-2 btn-sm" > <i className="fa fa-heart" /> Add to Favourite</button>
                              
-                            </div>
+                            </div> */}
                         </form>
                     </div>
                 </div>
