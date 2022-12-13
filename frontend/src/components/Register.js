@@ -73,7 +73,7 @@ function Register() {
   return user.loading ? (
     <h1>Hold on till we register you!</h1>
   ) : (
-    <div className="container col-5 mt-5 p-5 mainBox">
+    <div className="container col-6 mt-0 p-5 col-sm-12 col-xl-6 col-lg-6 col-12 mainBox">
       <h1 className="text-center mt-3">Register</h1>
       <br />
       <form className="mt-3 labelInputs" onSubmit={formHandler}>

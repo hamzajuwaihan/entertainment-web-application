@@ -67,7 +67,7 @@ function Login() {
 
 
 
-    return(<div className='container mainBox col-4 mt-5 p-5'>
+    return(<div className='container mainBox col-6 mt-0 p-5 col-sm-12 col-xl-6 col-lg-6 col-12    '>
     <h1 className = 'text-center'>Login</h1 >
         <form className='mt-3 labelInputs' onSubmit={loginHandler}>
          {user.error && <div className='alert alert-danger'>{user.error}</div>}
