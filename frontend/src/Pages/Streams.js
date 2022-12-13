@@ -1,5 +1,5 @@
 import React from 'react'
-import MoviesContainerTest from '../components/Streams/MoviesContainerTest'
+import MoviesContainer from '../components/Streams/MoviesContainer'
 
 import Featured from '../components/Streams/Featured'
 // import LiveStreamStart from '../components/Streams/LiveStreamStart'
@@ -8,7 +8,7 @@ function Streams() {
     <>
     <Featured/>
     {/* <LiveStreamStart/> */}
-    <MoviesContainerTest/>
+    <MoviesContainer/>
 
     
     </>

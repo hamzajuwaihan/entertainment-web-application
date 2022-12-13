@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { FETCH_MOVIES_REQUEST, FETCH_MOVIES_FAILURE, FETCH_MOVIES_SUCCESS, DELETE_MOVIE_REQUEST, DELETE_MOVIE_SUCCESS, DELETE_MOVIE_FAILURE, ADD_MOVIE_REQUEST, ADD_MOVIE_SUCCESS, ADD_MOVIE_FAILURE, SEARCH_MOVIE_REQUEST, UPDATE_MOVIE_REQUEST
-    ,VIEW_MOVIES_REQUEST,VIEW_MOVIES_SUCCESS,VIEW_MOVIES_FAILURE } from "./moviesType";
+    ,VIEW_MOVIES_REQUEST,VIEW_MOVIES_SUCCESS,VIEW_MOVIES_FAILURE, LATEST_MOVIE_SUCCESS, LATEST_MOVIE_FAILURE } from "./moviesType";
 
 
 // ? FETCH MOVIES ACTIONS SECTION
@@ -188,5 +188,53 @@ export const updateMovie = (movie) => {
             dispatch(fetchMoviesFailure(error.message));
         })
 
+    }
+
+
+
+
+
+    
+}
+
+
+
+// LATEST MOVIE SECTION 
+export function latestMoviesRequest() {
+    return {
+        type: VIEW_MOVIES_REQUEST
+    }
+}
+
+export function latestMoviesSuccess(movies) {
+    return {
+        type: LATEST_MOVIE_SUCCESS,
+        payload: movies
+    }
+}
+
+
+
+
+export function latestMoviesFailure(error) {
+    return {
+        type: LATEST_MOVIE_FAILURE,
+        payload: error
+    }
+}
+
+
+export const latestMovie=(view)=>{
+    return (dispatch) => {
+        dispatch(latestMoviesRequest());
+        axios.get('http://127.0.0.1:8000/api/latestMovie')
+            .then(response => {
+                const movies = response.data;
+                dispatch(latestMoviesSuccess(movies));
+
+            })
+            .catch(error => {
+                dispatch(latestMoviesFailure(error.message));
+            })
     }
 }

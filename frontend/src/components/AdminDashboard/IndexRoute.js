@@ -22,7 +22,7 @@ function IndexRoute() {
               <div class="col-12 col-lg-3 ">
 
                 <div class="mb-5"></div>
-                <MessageBox />
+                {/* <MessageBox /> */}
               </div>
             </section>
           </div>

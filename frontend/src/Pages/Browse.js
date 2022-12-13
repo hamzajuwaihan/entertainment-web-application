@@ -1,14 +1,14 @@
 import React from 'react'
 
-import Featured from '../components/Browse/Featured'
-import LiveStream from '../components/Browse/LiveStream'
-import StartStream from '../components/Browse/StartStream'
+// import Featured from '../components/Browse/Featured'
+// import LiveStream from '../components/Browse/LiveStream'
+// import StartStream from '../components/Browse/StartStream'
 function Browse() {
   return (
     <>
-      <Featured />
+      {/* <Featured />
       <StartStream />
-      <LiveStream />
+      <LiveStream /> */}
       
     </>
   )

@@ -74,6 +74,9 @@ const NavBar = () => {
                     <li>
                         <NavLink to="/Streams">Streams</NavLink>
                     </li>
+                    <li>
+                        <NavLink to="/contact">Contact</NavLink>
+                    </li>
 
                     {sessionStorage.length === 0 ? (
                         <>
@@ -91,13 +94,7 @@ const NavBar = () => {
                     ) : null}
                     {sessionStorage.length !== 0 ? (
                         <li className="nav-item dropdown">
-                            <a
-                                className="nav-link dropdown-toggle"
-                                href="#"
-                                role="button"
-                                data-bs-toggle="dropdown"
-                                aria-expanded="false"
-                            >
+                            <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 {sessionStorage.getItem("name")}
                             </a>
                             <ul className="dropdown-menu">

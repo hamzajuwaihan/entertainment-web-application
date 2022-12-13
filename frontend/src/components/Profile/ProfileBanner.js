@@ -34,7 +34,7 @@ function ProfileBanner() {
             <div className="row">
               <div className="col-lg-12">
                 <div className="heading-section">
-                  <h4><em>Your Most Popular</em> Clips</h4>
+                  <h4><em>Your Favourite</em> Movies</h4>
                 </div>
               </div>
               <div className="col-lg-3 col-sm-6">

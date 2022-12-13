@@ -2,7 +2,7 @@
 import { Link } from 'react-router-dom';
 
 
-function SingleMovieTest({ id, title, rating, image , release_date}) {
+function SingleMovie({ id, title, rating, image , release_date}) {
 
 var release = release_date.split('-')
 
@@ -12,7 +12,7 @@ var release = release_date.split('-')
       <div className="col-lg-3 col-sm-6 mt-4" >
         <div className="item">
           <div className="thumb">
-            <img src={`http://localhost:8000/images/${image}`} alt ="aaaaa" style={{height:"300px"}} />
+            <img src={`http://localhost:8000/images/${image}`} alt ="" style={{height:"300px"}} />
             <div className="hover-effect">
               <div className="content">
                 <ul>
@@ -47,4 +47,4 @@ var release = release_date.split('-')
   )
 }
 
-export default SingleMovieTest
+export default SingleMovie

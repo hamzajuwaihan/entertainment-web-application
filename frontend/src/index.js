@@ -12,14 +12,15 @@ import Login from './components/Login';
 import Details from './Pages/Details';
 import Streams from './Pages/Streams';
 import Profile from './Pages/Profile';
-import MoviesContainerTest from './components/MoviesContainerTest';
+import MoviesSearch from './components/MoviesSearch';
 import MoviesDashboard from './components/AdminDashboard/MoviesDashboard';
 import IndexRoute from './components/AdminDashboard/IndexRoute';
 import { Provider } from 'react-redux';
 import store from './redux/store';
 import UsersDashboard from './components/AdminDashboard/UsersDashboard';
-import SingleMovieTest from './components/SingleMovieTest';
+// import SingleMovieTest from './components/SingleMovieTest';
 import About from './components/About/About';
+import Contact from './components/contact';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -40,8 +41,10 @@ root.render(
           <Route path="About" element={<About />} />
           <Route path="Streams" element={<Streams />} />
           <Route path="Profile" element={<Profile />} />
-          <Route path="movies" element={<MoviesContainerTest />} />
+          <Route path="contact" element={<Contact />} />
+          <Route path="movies" element={<MoviesSearch/>} />
           <Route path="movie/:movieId" element={<Details />} />
+
 
           </Route>
 

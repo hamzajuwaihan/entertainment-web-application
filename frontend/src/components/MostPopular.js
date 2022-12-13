@@ -17,7 +17,7 @@ function MostPopular() {
       <div className="col-lg-12">
         <div className="heading-section">
           <h4>
-            <em>Most Popular</em> Live Stream
+            <em>Most Popular</em> Right Now
           </h4>
         </div>
       </div>

@@ -16,7 +16,14 @@ function Post({ id, comments, post, user, created_at }) {
         console.log(allComment, newComments);
         setAllComment(newComments);
     }
+    const current = new Date();
 
+    const time = current.toLocaleTimeString("en-US", {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+
+  const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
     return (
         <>
             <div className="row d-flex justify-content-start mt-5">
@@ -28,7 +35,8 @@ function Post({ id, comments, post, user, created_at }) {
                                 <div>
                                     <h6 className="fw-bold mb-1">{user.name}</h6>
                                     <p className="text-muted small mb-0">
-                                        {created_at}
+                                        {time}<br/>
+                                        {date}
                                     </p>
                                 </div>
                             </div>

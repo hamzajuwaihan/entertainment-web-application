@@ -16,7 +16,7 @@ function DetailsStart({title ,rating,overview,genre,runtime,popularity,release_d
             <div className="left-info h-100 " >
               <div className="left mt-3">
                 <h4>{title}</h4>
-                <span>{genre}</span>
+                <span>{genre}</span><AddToFavourite/>
               </div>
               <ul className='mt-3'>
                 {/* <li><i className="fa fa-heart" /> Add To Favourite </li><br/> */}
@@ -25,7 +25,7 @@ function DetailsStart({title ,rating,overview,genre,runtime,popularity,release_d
                 <li><i className="fa fa-server" /> Popularity : {popularity}</li><br/>
                 <li><i className="fa fa-gamepad" /> Release Date : {release_date}</li>
                   
-              </ul><AddToFavourite/>
+              </ul>
             </div>
           </div>
           <div className="col-lg-6">

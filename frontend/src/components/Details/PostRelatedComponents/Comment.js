@@ -5,6 +5,15 @@ function Comment({ comment, user, created_at, handleDelete, id }) {
     const clickHandler = () => {
         handleDelete(id);
     }
+
+    const current = new Date();
+
+const time = current.toLocaleTimeString("en-US", {
+  hour: "2-digit",
+  minute: "2-digit",
+});
+
+  const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
     return (
         <>
             <div className="card mb-3 bg-dark" >
@@ -17,14 +26,15 @@ function Comment({ comment, user, created_at, handleDelete, id }) {
                                     {user.name}
                                     <div className="text-dark ms-2 text-white">{comment}</div>
                                 </h6>
-                                <p className="mb-0">{created_at}</p>
+                                <p className="mb-0">{time},{date} </p>
+                             
                             </div>
 
                         </div>
 
 
                     </div>
-                    {commentOwner && (<button className='btn btn-sm btn-danger' onClick={clickHandler}>Delete</button>)}
+                    {commentOwner && (<button className='btn btn-sm btn-danger' onClick={clickHandler}><i className="fa fa-remove"></i></button>)}
                 </div>
             </div>
         </>

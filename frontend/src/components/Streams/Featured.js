@@ -1,105 +1,67 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
-import '../Browse/owl.css';
+import './owl.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { latestMovie } from '../../redux/movies/moviesActions';
+import { Link } from 'react-router-dom';
 function Featured() {
+  const movies = useSelector(state => state.movies);
+  const currentMovies = movies.movies.slice(0, 10);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(latestMovie());
+  }, []);
   return (
     <div className="row">
-      <div className="col-lg-8">
+      <div className="col-lg-12">
         <div className="featured-games header-text">
           <div className="heading-section">
-            <h4><em>Live</em> Streams</h4>
+            <h4><em>Latest </em> Movies</h4>
           </div>
           <div className="owl-features owl-carousel">
-            <OwlCarousel items={3}
+            <OwlCarousel items={4}
               className="owl-theme"
               loop
               autoplay
               nav
-              margin={8} >
-              <div className="item">
-                <div className="thumb">
-                  <img src="./user/assets/images/featured-01.jpg" />
-                  <div className="hover-effect">
-                    <h6>2.4K Streaming</h6>
-                  </div>
-                </div>
-                <h4>CS-GO<br /><span>249K Downloads</span></h4>
-                <ul>
-                  <li><i className="fa fa-star" /> 4.8</li>
-                  <li><i className="fa fa-download" /> 2.3M</li>
-                </ul>
-              </div>
-              <div className="item">
-                <div className="thumb">
-                  <img src="./user/assets/images/featured-02.jpg" />
-                  <div className="hover-effect">
-                    <h6>2.4K Streaming</h6>
-                  </div>
-                </div>
-                <h4>Gamezer<br /><span>249K Downloads</span></h4>
-                <ul>
-                  <li><i className="fa fa-star" /> 4.8</li>
-                  <li><i className="fa fa-download" /> 2.3M</li>
-                </ul>
-              </div>
-              <div className="item">
-                <div className="thumb">
-                  <img src="./user/assets/images/featured-03.jpg" />
-                  <div className="hover-effect">
-                    <h6>2.4K Streaming</h6>
-                  </div>
-                </div>
-                <h4>Island Rusty<br /><span>249K Downloads</span></h4>
-                <ul>
-                  <li><i className="fa fa-star" /> 4.8</li>
-                  <li><i className="fa fa-download" /> 2.3M</li>
-                </ul>
-              </div>
-              <div className="item">
-                <div className="thumb">
-                  <img src="./user/assets/images/featured-01.jpg" />
-                  <div className="hover-effect">
-                    <h6>2.4K Streaming</h6>
-                  </div>
-                </div>
-                <h4>CS-GO<br /><span>249K Downloads</span></h4>
-                <ul>
-                  <li><i className="fa fa-star" /> 4.8</li>
-                  <li><i className="fa fa-download" /> 2.3M</li>
-                </ul>
-              </div>
-              <div className="item">
-                <div className="thumb">
-                  <img src="./user/assets/images/featured-02.jpg" />
-                  <div className="hover-effect">
-                    <h6>2.4K Streaming</h6>
-                  </div>
-                </div>
-                <h4>Gamezer<br /><span>249K Downloads</span></h4>
-                <ul>
-                  <li><i className="fa fa-star" /> 4.8</li>
-                  <li><i className="fa fa-download" /> 2.3M</li>
-                </ul>
-              </div>
-              <div className="item">
-                <div className="thumb">
-                  <img src="./user/assets/images/featured-03.jpg" />
-                  <div className="hover-effect">
-                    <h6>2.4K Streaming</h6>
-                  </div>
-                </div>
-                <h4>Island Rusty<br /><span>249K Downloads</span></h4>
-                <ul>
-                  <li><i className="fa fa-star" /> 4.8</li>
-                  <li><i className="fa fa-download" /> 2.3M</li>
-                </ul>
-              </div>
+              margin={25} >
+              
+              {currentMovies.length > 0
+                ? currentMovies.map((movie) => {
+
+                  var year=movie.release_date.split("-")
+                    return (
+                      <div className="item">
+                      <div className="thumb">
+                        <img src={`http://localhost:8000/images/${movie.image}`}  style={{ height:"350px"}}/>
+                        <div className="hover-effect">
+                          <h6>  
+                          <Link to={`/movie/${movie.id}`}><i className="fa fa-eye" />
+                          Show
+                        </Link></h6>
+                        </div>
+             
+                      </div>
+
+                      <h4 className='col-6 px-1'>{movie.title}<br /><span></span></h4>
+                      <ul className=' px-4'>
+                        <li><i className="fa fa-star" /> {movie.rating}</li>
+                        <li><i className="fa fa-clock" /> {year[0]}</li>
+                      </ul>
+                    </div>
+                    );
+                  })
+                : null}
+             
+             
+
               </OwlCarousel>
           </div>
         </div>
       </div>
+    {/** 
       <div className="col-lg-4">
         <div className="top-streamers">
           <div className="heading-section">
@@ -148,7 +110,7 @@ function Featured() {
             </li>
           </ul>
         </div>
-      </div>
+      </div>*/}
     </div>
 
   )

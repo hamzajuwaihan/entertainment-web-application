@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Outlet } from 'react-router';
-import SingleMovieTest from './SingleMovieTest';
+import SingleMovie from './SingleMovie';
 import { fetchMovies, searchMovie } from '../../redux/movies/moviesActions';
 import {NavLink, useLocation, useNavigate } from 'react-router-dom'
 function MoviesContainerTest() {
@@ -56,7 +56,7 @@ function MoviesContainerTest() {
                 <div className="row">
                     <div className="col-lg-12">
                         <div className="heading-section">
-                            <h4 class><em>Most Popular</em> Right Now</h4>
+                            <h4 class><em>All Movies</em> Right Now</h4>
                         </div>
                         {/* <div style={{backgroundColor:"#27292a",height:"46px",borderRadius:"23px",border:"none",color:"#666",fontSize:"14px",padding:"0px 15px 0px 45px"}}>
 
@@ -79,7 +79,7 @@ function MoviesContainerTest() {
                             {currentPosts.length > 0 ? currentPosts.map((movie) => {
                                 return (
 
-                                    <SingleMovieTest title={movie.title} rating={movie.rating} image={movie.image} id={movie.id} key={movie.id}  release_date={movie.release_date} />
+                                    <SingleMovie title={movie.title} rating={movie.rating} image={movie.image} id={movie.id} key={movie.id}  release_date={movie.release_date} />
 
                                 )
                             }) : null}

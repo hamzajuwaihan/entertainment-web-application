@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Outlet } from 'react-router';
 import { fetchMovies } from '../redux/movies/moviesActions';
-import SingleMovieTest from './SingleMovieTest';
+import SingleMovie from './Streams/SingleMovie';
 
 function MoviesContainerTest() {
     const movies = useSelector(state => state.movies);
@@ -42,7 +42,7 @@ function MoviesContainerTest() {
                             {currentPosts.length > 0 ? currentPosts.map((movie) => {
                                 return (
 
-                                    <SingleMovieTest title={movie.title} rating={movie.rating} image={movie.image} id={movie.id} key={movie.id}  release_date={movie.release_date} />
+                                    <SingleMovie title={movie.title} rating={movie.rating} image={movie.image} id={movie.id} key={movie.id}  release_date={movie.release_date} />
 
                                 )
                             }) : null}
