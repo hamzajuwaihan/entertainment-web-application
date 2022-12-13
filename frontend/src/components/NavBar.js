@@ -2,8 +2,8 @@
 import { userClearInfo } from "../redux/users/usersActions";
 import { fetchMovies, searchMovie } from '../redux/movies/moviesActions';
 import React, { useState } from 'react'
-import { useDispatch} from 'react-redux';
-import {NavLink, useLocation, useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 
 function showBox() {
     const status = document.getElementById("nav-box-minimize").style.display;
@@ -17,7 +17,7 @@ const NavBar = () => {
 
     const [search, setSearch] = useState('');
     const location = useLocation();
-    const dispatch = useDispatch();  
+    const dispatch = useDispatch();
     const navigate = useNavigate();
     const searchHandler = (e) => {
         e.preventDefault();
@@ -31,91 +31,89 @@ const NavBar = () => {
         }
     }
 
-    
-  return (
-    <>
-      <header className="header-area header-sticky">
-        <div className="container">
-          <div className="row">
-            <div className="col-12">
-              <nav className="main-nav">
-                {/* <!-- ***** Logo Start ***** --> */}
-                <a href="/" className="logo">
-                  <img src="/user/assets/images/logo.png" alt="" />
-                </a>
-                {/* <!-- ***** Logo End ***** -->
+
+    return (
+        <>
+            <header className="header-area header-sticky">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-12">
+                            <nav className="main-nav">
+                                {/* <!-- ***** Logo Start ***** --> */}
+                                <a href="/" className="logo">
+                                    <img src="/user/assets/images/logo.png" alt="" />
+                                </a>
+                                {/* <!-- ***** Logo End ***** -->
                 <!-- ***** Search End ***** --> */}
-                 
-                <div className="search-input">
-                  <form id="search" action="#" onSubmit={searchHandler}>
-                    <input
-                       type="search"
-                      placeholder="Type Something"
-                      id="searchText"
-                      name="search"
-                      onkeypress="handle"
-                      value={search} onChange={(e) => { setSearch(e.target.value) }}
-                    />
-                    <i className="fa fa-search"></i>
-                  </form>
-                </div>
-                {/* <!-- ***** Search End ***** -->*/}
-                <ul className="nav" id="nav-box-minimize">
-                    <li>
-                        <NavLink to="/">Home</NavLink>
-                    </li>
 
-                    {/* <li>
-                        <NavLink to="/Browse">Browse</NavLink>
-                    </li> */}
-                    {/* <li>
-                        <NavLink to="/movies">Movies</NavLink>
-                    </li> */}
-                    <li>
-                        <NavLink to="/Streams">Streams</NavLink>
-                    </li>
-                    <li>
-                        <NavLink to="/contact">Contact</NavLink>
-                    </li>
+                                <div className="search-input">
+                                    <form id="search" action="#" onSubmit={searchHandler}>
+                                        <input
+                                            type="search"
+                                            placeholder="Type Something"
+                                            id="searchText"
+                                            name="search"
+                                            onkeypress="handle"
+                                            value={search} onChange={(e) => { setSearch(e.target.value) }}
+                                        />
+                                        <i className="fa fa-search"></i>
+                                    </form>
+                                </div>
+                                {/* <!-- ***** Search End ***** -->*/}
+                                <ul className="nav" id="nav-box-minimize">
+                                    <li>
+                                        <NavLink to="/">Home</NavLink>
+                                    </li>
 
-                    {sessionStorage.length === 0 ? (
-                        <>
-                            <li className="nav-item">
-                                <NavLink className="nav-link" to={"/register"}>
-                                    Register
-                                </NavLink>
-                            </li>
-                            <li className="nav-item">
-                                <NavLink className="nav-link" to={"/login"}>
-                                    login
-                                </NavLink>
-                            </li>
-                        </>
-                    ) : null}
-                    {sessionStorage.length !== 0 ? (
-                        <li className="nav-item dropdown">
-                            <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                {sessionStorage.getItem("name")}
-                            </a>
-                            <ul className="dropdown-menu">
-                                <li>
-                                    <NavLink className="dropdown-item" to="Profile">
-                                        Profile
-                                    </NavLink>
-                                </li>
-                                <li>
-                                    <button
-                                        className="dropdown-item"
-                                        onClick={() => dispatch(userClearInfo())}
-                                    >
-                                        Logout
-                                    </button>
-                                </li>
-                            </ul>
-                        </li>
-                    ) : null}
+                                    <li>
+                                        <NavLink to="/About">About</NavLink>
+                                    </li>
 
-                    <li></li>
+                                    <li>
+                                        <NavLink to="/Streams">Streams</NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink to="/contact">Contact</NavLink>
+                                    </li>
+
+                                    {sessionStorage.length === 0 ? (
+                                        <>
+                                            <li className="nav-item">
+                                                <NavLink className="nav-link" to={"/register"}>
+                                                    Register
+                                                </NavLink>
+                                            </li>
+                                            <li className="nav-item">
+                                                <NavLink className="nav-link" to={"/login"}>
+                                                    login
+                                                </NavLink>
+                                            </li>
+                                        </>
+                                    ) : null}
+                                    {sessionStorage.length !== 0 ? (
+                                        <li className="nav-item dropdown">
+                                            <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                {sessionStorage.getItem("name")}
+                                            </a>
+                                            <ul className="dropdown-menu">
+                                                <li>
+                                                    <NavLink className="dropdown-item" to="Profile">
+                                                        Profile
+                                                    </NavLink>
+                                                </li>
+                                                <li>
+                                                    <button
+                                                        className="dropdown-item"
+                                                        onClick={() => dispatch(userClearInfo())}
+                                                    >
+                                                        Logout
+                                                    </button>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    ) : null}
+
+                                    <li></li>
                                 </ul>
                                 <a className="menu-trigger" id="trigger" onClick={showBox}>
                                     <span>Menu</span>
