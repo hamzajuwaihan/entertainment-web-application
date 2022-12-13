@@ -45,7 +45,7 @@ const Contact = () => {
             <div color="mt-2">
               <h2>You tell us.</h2>
               <br></br>
-              <h5> info@GoMovies.com</h5>
+              <h5> info@filmfeed.com</h5>
               <br></br>
               <h5> need Help? Call Us. +962777777777</h5>
             </div>
