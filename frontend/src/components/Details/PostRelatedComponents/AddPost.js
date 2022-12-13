@@ -46,7 +46,7 @@ function AddPost() {
                                 </div>
                             </div><br/>
                             <div className="float-end mt-2 pt-1">
-                                <button type="submit" style={{backgroundColor:"#ec6090", color:"white"}} className="btn me-2 btn-sm" >comment</button>
+                                <button type="submit" style={{backgroundColor:"#ec6090", color:"white"}} className="btn me-2 btn-sm" >post</button>
                                 <button type="button" style={{border:"1px solid #ec6090", color:"white"}} className="btn  btn-sm">Cancel</button>
                             </div>
                         </form>

@@ -80,7 +80,7 @@ function RandomTrailer() {
 
     return (
         <div className="gaming-library">
-        <div className="col-lg-12 h-10" style={{height:"250px"}}>
+        <div className="col-lg-12 h-12" style={{height:"120vh"}}>
             <div className="heading-section">
                 <h4><em>Random Movie</em> Trailer</h4>
             </div>
@@ -89,7 +89,7 @@ function RandomTrailer() {
                 <main>
                     {movie ?
                         <div className="poster"
-                             style={{backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)), url(${BACKDROP_PATH}${movie.backdrop_path})`}}>
+                             style={{backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)), url(${BACKDROP_PATH}${movie.backdrop_path})`,height:'100vh'}}>
                             {playing ?
                                 <>
                                     <Youtube
@@ -112,6 +112,7 @@ function RandomTrailer() {
                                                 },
                                             }
                                         }
+                                        style={{height:'100vh'}}
                                     />
                                     <button onClick={() => setPlaying(false)} className={"button close-video"}>Close
                                     </button>
