@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-// import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
@@ -8,7 +7,6 @@ import Dashboard from './components/Dashboard';
 import Home from './Pages/Home';
 import Register from './components/Register';
 import Login from './components/Login';
-// import Browse from './Pages/Browse';
 import Details from './Pages/Details';
 import Streams from './Pages/Streams';
 import Profile from './Pages/Profile';
@@ -18,7 +16,6 @@ import IndexRoute from './components/AdminDashboard/IndexRoute';
 import { Provider } from 'react-redux';
 import store from './redux/store';
 import UsersDashboard from './components/AdminDashboard/UsersDashboard';
-// import SingleMovieTest from './components/SingleMovieTest';
 import About from './components/About/About';
 import Contact from './components/contact';
 

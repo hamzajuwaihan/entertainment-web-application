@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 function AddComment({ post_id }) {
     const [closed, setClosed] = React.useState(false);
     const { movieId } = useParams();
-    const userID = JSON.parse(sessionStorage.getItem('user')).id;
+    const userID = JSON.parse(sessionStorage.getItem('user')) === null ? 0 : JSON.parse(sessionStorage.getItem('user')).id;
     const [comment, setComment] = useState('');
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -22,10 +22,10 @@ function AddComment({ post_id }) {
 
         setComment('');
     }
- 
+
     return (
         <>
-            {!closed && <div className="card-footer py-3 border-0" >
+            {userID !== 0 && !closed ? <div className="card-footer py-3 border-0" >
                 <form onSubmit={handleSubmit}>
                     <div className="d-flex flex-start w-100">
 
@@ -36,11 +36,11 @@ function AddComment({ post_id }) {
                         </div>
                     </div>
                     <div className="float-end mt-2 pt-1">
-                        <button type="submit" style={{backgroundColor:"#ec6090"}} className="btn  me-2 btn-sm">Reply</button>
-                        <button type="button" style={{border:"1px solid #ec6090", color:"#ec6090"}} className="btn  btn-sm" onClick={() => setClosed(!closed)}>Cancel</button>
+                        <button type="submit" style={{ backgroundColor: "#ec6090" }} className="btn  me-2 btn-sm">Reply</button>
+                        <button type="button" style={{ border: "1px solid #ec6090", color: "#ec6090" }} className="btn  btn-sm" onClick={() => setClosed(!closed)}>Cancel</button>
                     </div>
                 </form>
-            </div>}
+            </div> : null}
         </>
     )
 }
