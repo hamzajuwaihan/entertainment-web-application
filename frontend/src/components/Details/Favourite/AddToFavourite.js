@@ -1,68 +1,84 @@
 import axios from 'axios';
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 
 function AddToFavourite() {
 
     const { movieId } = useParams();
-    const [favourite, setFavourite] = React.useState({
-        
-        user_id: sessionStorage.getItem('id'),
-        movie_id: movieId
-    });
+    const [favourite, setFavourite] = useState(false);
+    const user = JSON.parse(sessionStorage.getItem('user'));
 
-    // const handleChange = (e) => {
-    //     setFavourite({ ...favourite, [e.target.name]: e.target.value })
-    // }
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:8000/api/favourite', {
-           
-            user_id: favourite.user_id,
-            movie_id: favourite.movie_id
-        }).then((res) => {
-            console.log(res);
-        }).catch((err) => {
-            console.log(err);
-        })
-        setFavourite({ ...favourite});
-    }
-    const x =document.getElementById("box");
-    const changColor=(e)=>{
-        if (x.style.color==='white'){
-            x.style.color='red'
-         }else {
-            x.style.color='white'}
-  
-    
+
+
     }
 
+    useEffect(() => {
+        if (user) {
+            axios.get(`http://localhost:8000/api/isFavourite/${user.id}/${movieId}`).then((res) => {
+                setFavourite(res.data.message);
+
+                console.log(res.data.message);
+
+            }).catch((err) => {
+                console.log(err);
+            })
+
+        }
+
+    }, []);
+
+
+
+
+
+    const changColor = (e) => {
+        if (e.target.style.color === "red") {
+            e.target.style.color = "white";
+            axios.delete(`http://localhost:8000/api/deleteFavourite/`, {
+                data: {
+                    userId: user.id,
+                    movieId: movieId
+                }
+            }).then((res) => {
+                setFavourite(true);
+                console.log(res.data.message);
+            }).catch((err) => {
+
+                console.log(err);
+            })
+        } else {
+            e.target.style.color = "red";
+            axios.post(`http://localhost:8000/api/favourite/`, {
+                userId: user.id,
+                movieId: movieId
+            }).then((res) => {
+                setFavourite(true);
+                console.log(res.data.message);
+            }).catch((err) => {
+
+                console.log(err);
+            })
+        };
+    }
     return (
         <>
-           
+
             <div className="container mt-3 ">
                 <div className='row justify-content-start'>
                     <div className=" py-3 border-0" >
-                        <form onSubmit={handleSubmit}>
-                            <div className="">
-
-                                {/* <div className="form-outline w-100">
-                                    <textarea className="form-control" id="textAreaExample" rows="4"
-                                        style={{ background: "#fff" }} value={post.text} name="text" onChange={(e)=> handleChange(e)}></textarea>
-                                </div> */}
-                            </div>
-                            <button type="submit" className="btn me-2 btn-lg" style={{fontSize:"30px"}} >
-                          <i id="box"  style={{color:"white", cursor:"pointer" }} className="fa fa-heart  hundrad" onClick={changColor} />
-                           </button> 
-                            {/* <div classname="float-end mt-2 pt-1 ">
-                  
-
-                              
-                                <button type="submit" className="btn btn-primary me-2 btn-sm" > <i className="fa fa-heart" /> Add to Favourite</button>
-                             
-                            </div> */}
-                        </form>
+                        {
+                            user ?
+                                <form onSubmit={handleSubmit}>
+                                    <div className="">
+                                    </div>
+                                    <button type="submit" className="btn me-2 btn-lg" style={{ fontSize: "30px" }} >
+                                        <i id="box" className={`fa fa-heart  hundrad ${favourite === "true" ? 'red' : 'white'}`} onClick={changColor} />
+                                    </button>
+                                </form> : null
+                        }
                     </div>
                 </div>
             </div>

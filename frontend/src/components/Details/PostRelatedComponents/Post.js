@@ -11,19 +11,27 @@ function Post({ id, comments, post, user, created_at }) {
         }).catch((err) => {
             console.log(err);
         })
- 
+
         const newComments = allComment.filter((comment) => comment.id !== id);
-        console.log(allComment, newComments);
+
         setAllComment(newComments);
     }
     const current = new Date();
 
     const time = current.toLocaleTimeString("en-US", {
-      hour: "2-digit",
-      minute: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit",
     });
+    const AddReply = (comment) => {
+        console.log(comment);
 
-  const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
+        setAllComment((prev) => {
+            return [...prev, comment];
+        });
+
+    }
+
+    const date = `${current.getDate()}/${current.getMonth() + 1}/${current.getFullYear()}`;
     return (
         <>
             <div className="row d-flex justify-content-start mt-5">
@@ -35,8 +43,8 @@ function Post({ id, comments, post, user, created_at }) {
                                 <div>
                                     <h6 className="fw-bold mb-1">{user.name}</h6>
                                     <p className="text-muted small mb-0">
-                                        
-                                        
+
+
                                         {created_at}
                                     </p>
                                 </div>
@@ -59,7 +67,7 @@ function Post({ id, comments, post, user, created_at }) {
                         </div>
 
                         {/*add comment form start */}
-                        <AddComment post_id={id} />
+                        <AddComment post_id={id} handleAdd={AddReply} />
 
                     </div>
                 </div>

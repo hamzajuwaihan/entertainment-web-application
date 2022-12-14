@@ -14,20 +14,23 @@ function Details() {
     axios.get(`http://localhost:8000/api/movie/${movieId}`).then((res) => {
       setMovie(res.data.movie);
       setPosts(res.data.posts);
-
+      document.title = res.data.movie.title;
     }).catch((err) => {
       console.log(err);
     })
+  }, []);
+
+  useEffect(() => {
+
   }, []);
   return (
     <>
 
       <Featured image={movie.image} poster={movie.poster} />
       <DetailsStart title={movie.title} rating={movie.rating} overview={movie.overview} genre={movie.genre} runtime={movie.runtime} popularity={movie.popularity} release_date={movie.release_date} />
-      {/* <OtherStart /> */}
       {posts.map((post) => {
         return (
-          <Post {...post} key={post.id}/>
+          <Post {...post} key={post.id} />
         )
       })}
       <PostComment />
