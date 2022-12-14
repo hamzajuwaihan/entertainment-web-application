@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { useDispatch } from 'react-redux';
 import { deleteUser, editUser } from '../../redux/users/usersActions';
-
+import swal from 'sweetalert';
 function SingleUser({ id, name, type, email }) {
     const [show, setShow] = useState(false);
     const close = useRef(null);
@@ -29,10 +29,34 @@ function SingleUser({ id, name, type, email }) {
             email: user.email
         }));
         console.log(user)
+    
+            swal("User info has been Edited!", {
+                icon: "success",
+                
+              });
+           
         close.current.click();
     }
     const handleDelete = () => {
-        dispatch(deleteUser(id));
+        
+        swal({
+            title: `Are you sure to delete ${name}?`,
+            text: "Once deleted, you will not be able to recover !",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          })
+          .then((willDelete) => {
+            if (willDelete) {
+            swal("Poof!User  has been deleted!", {
+                icon: "success",
+                
+              });
+              dispatch(deleteUser(id));
+            } else {
+              
+            }
+          });
     }
     return (
         <>

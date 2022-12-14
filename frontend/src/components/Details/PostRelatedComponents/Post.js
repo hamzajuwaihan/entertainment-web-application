@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import AddComment from './AddComment'
 import Comment from './Comment'
 
-function Post({ id, comments, post, user, created_at }) {
+function Post({ id, comments, post, user,created_at }) {
     const [allComment, setAllComment] = useState([...comments]);
     const handleDelete = (id) => {
         axios.delete(`http://localhost:8000/api/comment/${id}`).then((res) => {
@@ -16,12 +16,9 @@ function Post({ id, comments, post, user, created_at }) {
 
         setAllComment(newComments);
     }
-    const current = new Date();
+    
 
-    const time = current.toLocaleTimeString("en-US", {
-        hour: "2-digit",
-        minute: "2-digit",
-    });
+ 
     const AddReply = (comment) => {
 
 
@@ -30,6 +27,7 @@ function Post({ id, comments, post, user, created_at }) {
         });
 
     }
+
     const editHandler = (comment) => {
         axios.put(`http://localhost:8000/api/comment/${comment.id}`, comment).then((res) => {
             console.log(res);
@@ -48,7 +46,10 @@ function Post({ id, comments, post, user, created_at }) {
 
     }
     
-    const date = `${current.getDate()}/${current.getMonth() + 1}/${current.getFullYear()}`;
+
+    let dateObj = new Date(created_at);
+   
+
     return (
         <>
             <div className="row d-flex justify-content-start mt-5">
@@ -59,14 +60,13 @@ function Post({ id, comments, post, user, created_at }) {
 
                                 <div>
                                     <h6 className="fw-bold mb-1">{user.name}</h6>
-                                    <p className="text-muted small mb-0">
+                                    <p className="text-muted small mb-0">Published on {dateObj.toLocaleDateString("en-US")}
 
-
-                                        {created_at}
+                                 
                                     </p>
                                 </div>
                             </div>
-                            {created_at}
+                          
                             <p className="mt-3 mb-4 pb-2">
                                 {post}
                             </p>

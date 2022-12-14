@@ -1,10 +1,11 @@
+
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { useParams } from 'react-router';
+import swal from 'sweetalert';
 function Comment({ comment, user, created_at, handleDelete, id, editHandler }) {
     const [show, setShow] = useState(false);
-
     const { movieId } = useParams();
     const [commentText, setCommentText] = useState(comment);
     const handleClose = () => setShow(false);
@@ -12,7 +13,26 @@ function Comment({ comment, user, created_at, handleDelete, id, editHandler }) {
     const userID = JSON.parse(sessionStorage.getItem('user')) ? JSON.parse(sessionStorage.getItem('user')).id : null;
     const commentOwner = userID === user.id;
     const clickHandler = () => {
-        handleDelete(id);
+        
+
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          })
+          .then((willDelete) => {
+            if (willDelete) {
+            swal("Poof! Your imaginary raplay has been deleted!", {
+                icon: "success",
+                
+              });
+              handleDelete(id);
+            } else {
+              
+            }
+          });
     }
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -20,7 +40,6 @@ function Comment({ comment, user, created_at, handleDelete, id, editHandler }) {
             id, comment: commentText, movie_id: movieId,
             user: user
         });
-
     }
     const current = new Date();
 
@@ -29,7 +48,10 @@ function Comment({ comment, user, created_at, handleDelete, id, editHandler }) {
         minute: "2-digit",
     });
 
-    const date = `${current.getDate()}/${current.getMonth() + 1}/${current.getFullYear()}`;
+
+    let dateObj = new Date(created_at);
+    
+
     return (
         <>
             <div className="card mb-3 bg-dark" >
@@ -39,10 +61,11 @@ function Comment({ comment, user, created_at, handleDelete, id, editHandler }) {
                         <div className="w-100">
                             <div className="d-flex justify-content-between align-items-center mb-3">
                                 <h6 className=" fw-bold mb-0">
-                                    {user.name}
-                                    <div className="text-dark ms-2 text-white">{comment}</div>
-                                </h6>
-                                <p className="mb-0"> published on {time} </p>
+                                    {user.name} 
+
+                                    <div className="text-dark ms-2 mt-3 text-white">{comment}</div>
+                               </h6>
+                                <p className="mb-0"> published on {dateObj.toLocaleDateString("en-US")} </p>
 
                             </div>
 
