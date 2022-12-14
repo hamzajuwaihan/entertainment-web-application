@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React from 'react'
 import { useParams } from 'react-router-dom';
-
+import swal from 'sweetalert';
 function AddPost() {
 
     const { movieId } = useParams();
@@ -23,6 +23,8 @@ function AddPost() {
             movie_id: post.movie_id
         }).then((res) => {
             console.log(res);
+            swal("post", "Your post will appear after approval by the administrator");
+
         }).catch((err) => {
             console.log(err);
         })

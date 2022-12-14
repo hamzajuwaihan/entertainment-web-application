@@ -1,11 +1,30 @@
 import React from 'react'
-
+import swal from 'sweetalert';
 function Comment({ comment, user, created_at, handleDelete, id }) {
 
     const userID = JSON.parse(sessionStorage.getItem('user')) ? JSON.parse(sessionStorage.getItem('user')).id : null;
     const commentOwner = userID === user.id;
     const clickHandler = () => {
-        handleDelete(id);
+        
+
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          })
+          .then((willDelete) => {
+            if (willDelete) {
+            swal("Poof! Your imaginary raplay has been deleted!", {
+                icon: "success",
+                
+              });
+              handleDelete(id);
+            } else {
+              
+            }
+          });
     }
 
     const current = new Date();
