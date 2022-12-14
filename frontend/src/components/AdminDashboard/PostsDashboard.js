@@ -1,14 +1,32 @@
 import axios from 'axios';
 import React, { useEffect } from 'react'
 import SinglePost from './SinglePost';
-
+import swal from 'sweetalert';
 function PostsDashboard() {
     const [posts, setPosts] = React.useState([]);
 
     const handleDelete = (id) => {
-        const newPosts = posts.filter((post) => post.id !== id);
-        setPosts(newPosts);
-        axios.delete(`http://localhost:8000/api/post/${id}`);
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          })
+          .then((willDelete) => {
+            if (willDelete) {
+            swal("Poof! Your imaginary raplay has been deleted!", {
+                icon: "success",
+                
+              });
+              const newPosts = posts.filter((post) => post.id !== id);
+              setPosts(newPosts);
+              axios.delete(`http://localhost:8000/api/post/${id}`);
+            } else {
+              
+            }
+          });
+       
     }
     const handleEdit = (id, status) => {
         setPosts(posts.map((post) => {
@@ -33,6 +51,10 @@ function PostsDashboard() {
         axios.put(`http://localhost:8000/api/post/${id}`, {
             status: status
         })
+        swal("Post info has been Edited!", {
+            icon: "success",
+            
+          });
     }
     useEffect(() => {
         document.title = 'Posts Dashboard';

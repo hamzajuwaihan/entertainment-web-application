@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { useDispatch } from 'react-redux';
+import swal from 'sweetalert';
 import { fetchMovies } from '../../redux/movies/moviesActions';
 function SingleMovie({ id, image, title, genre, overview, release_date, runtime, poster, popularity, rating }) {
     const [show, setShow] = useState(false);
@@ -55,6 +56,10 @@ function SingleMovie({ id, image, title, genre, overview, release_date, runtime,
             })
             .then(res => {
                 console.log(res.data)
+                swal("Movie info has been Edited!", {
+                    icon: "success",
+                    
+                  });
             })
             .catch(err => {
                 console.log(err)
