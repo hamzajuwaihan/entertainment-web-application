@@ -35,7 +35,7 @@ function AddPost() {
         <>
 
          <div className="heading-section mt-5 px-3">
-          <h4><em>Add a </em> post</h4></div>
+          <h4><em>Add a</em> post</h4></div>
          
 
             <div className="container mt-3 ">

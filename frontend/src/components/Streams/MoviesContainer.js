@@ -94,7 +94,7 @@ function MoviesContainerTest() {
             <ul className="pagination justify-content-center" style={{ marginTop: '10vh' }}>
                 {pageNumbers.map((number) => (
                     <li key={number} className="page-item" >
-                        <button onClick={() => paginate(number)} className="page-link" style={{marginRight:"20px" , backgroundColor:'#ec6090', color:'white'}}>
+                        <button onClick={() => paginate(number)} className="page-link" style={{marginRight:"10px" , backgroundColor:'black', color:'white'}}>
                             {number}
                         </button>
                     </li>
