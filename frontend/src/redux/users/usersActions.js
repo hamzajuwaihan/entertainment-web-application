@@ -1,6 +1,6 @@
 import axios from "axios"
 
-import {  EDIT_USER_REQUEST, GET_ALL_USERS_FAILURE, GET_ALL_USERS_REQUEST, GET_ALL_USERS_SUCCESS, USER_LOGIN_FAILURE, USER_LOGIN_REQUEST, USER_LOGIN_SUCCESS, USER_LOGOUT, USER_REGISTER_FAILURE, USER_REGISTER_REQUEST, USER_REGISTER_SUCCESS } from "./usersTypes"
+import { EDIT_USER_REQUEST, GET_ALL_USERS_FAILURE, GET_ALL_USERS_REQUEST, GET_ALL_USERS_SUCCESS, USER_LOGIN_FAILURE, USER_LOGIN_REQUEST, USER_LOGIN_SUCCESS, USER_LOGOUT, USER_REGISTER_FAILURE, USER_REGISTER_REQUEST, USER_REGISTER_SUCCESS } from "./usersTypes"
 
 // users Actions creators section 
 export const userRegisterRequest = () => {
@@ -22,29 +22,10 @@ export const userRegisterFailure = (error) => {
         payload: error
     }
 }
-export const userRegister = (user) => {
+export const userRegister = () => {
     return (dispatch) => {
         dispatch(userRegisterRequest())
-        axios.post('http://127.0.0.1:8000/api/register', user)
-            .then(response => {
-                const user = response.data.user
-                dispatch(userRegisterSuccess(user))
-
-                sessionStorage.setItem('type', user.type);
-                sessionStorage.setItem('name', user.name);
-                sessionStorage.setItem('id', user.id);
-
-                sessionStorage.setItem('user', JSON.stringify(user));
-
-
-
-
-            })
-            .catch(error => {
-                const errorMsg = error.message
-                dispatch(userRegisterFailure(errorMsg))
-                console.log(errorMsg);
-            })
+       
     }
 }
 
@@ -89,28 +70,7 @@ export const userLoginFailure = (error) => {
     }
 }
 
-export const userLogin = (user) => {
-    return (dispatch) => {
-        dispatch(userLoginRequest())
-        axios.post('http://127.0.0.1:8000/api/login', user)
-            .then(response => {
-                console.log(response);
-                const user = response.data.user
-                dispatch(userLoginSuccess(user))
-                sessionStorage.setItem('type', user.type);
-                sessionStorage.setItem('name', user.name);
-                sessionStorage.setItem('id', user.id);
-                sessionStorage.setItem('user', JSON.stringify(user));
-            })
-            .catch(error => {
 
-                const errorMsg = 'User Not found'
-                dispatch(userLoginFailure(errorMsg))
-                console.log(errorMsg);
-            }
-            )
-    }
-}
 
 export const getAllUsersReqest = () => {
 
