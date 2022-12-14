@@ -16,7 +16,11 @@ function NavBar() {
             </button>
             <div className="collapse navbar-collapse" id="navbarNav">
                 <ul className="navbar-nav flex-row d-none d-md-flex mx-auto">
-
+                    <li className="nav-item me-3 me-lg-1 mx-5">
+                        <a className="nav-link text-white" href="#">
+                            <NavLink to={"comments"}> <span><i className="fas fa-flag fa-lg px-2" style={{ color: '#f1c40f' }}></i>Comments </span></NavLink>
+                        </a>
+                    </li>
 
                     <li className="nav-item me-3 me-lg-1 mx-5">
                         <a className="nav-link text-white" href="#">

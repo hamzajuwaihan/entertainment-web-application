@@ -19,6 +19,7 @@ import UsersDashboard from './components/AdminDashboard/UsersDashboard';
 import About from './components/About/About';
 import Contact from './components/contact';
 import PostsDashboard from './components/AdminDashboard/PostsDashboard';
+import CommentsDashboard from './components/AdminDashboard/CommentsDashboard';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -31,6 +32,7 @@ root.render(
             <Route path="movies" element={<MoviesDashboard />} />
             <Route path="users" element={<UsersDashboard />} />
             <Route path="posts" element={<PostsDashboard />} />
+            <Route path="comments" element={<CommentsDashboard />} />
           </Route>
           <Route path="/" element={<App />} >
             <Route path="/" element={<Home />} />
