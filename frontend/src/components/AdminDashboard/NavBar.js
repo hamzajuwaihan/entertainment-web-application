@@ -20,7 +20,7 @@ function NavBar() {
 
                     <li className="nav-item me-3 me-lg-1 mx-5">
                         <a className="nav-link text-white" href="#">
-                            <NavLink to={"/dashboard/posts"}> <span><i className="fas fa-flag fa-lg px-2" style={{ color: '#f1c40f' }}></i>Posts </span></NavLink>
+                            <NavLink to={"/posts"}> <span><i className="fas fa-flag fa-lg px-2" style={{ color: '#f1c40f' }}></i>Posts </span></NavLink>
                         </a>
                     </li>
 
@@ -39,43 +39,37 @@ function NavBar() {
                     </li>
 
 
-
-
-
-
-                    {sessionStorage.length !== 0 ? (
-                        <li className="nav-item dropdown" style={{ color: "white", marginRight: "120px" }}>
-                            <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                {sessionStorage.getItem("name")}
-                            </a>
-                            <ul className="dropdown-menu" >
-                                <li>
-                                    <Link className="dropdown-item" to="/Profile">
-                                        Profile
-                                    </Link>
-                                </li>
-                                <li>
-                                    <button
-                                        className="dropdown-item"
-                                        onClick={() => dispatch(userClearInfo())}
-                                    >
-                                        Logout
-                                    </button>
-                                </li>
-                            </ul>
-                        </li>
-                    ) : null}
-
-
-
-
-
                 </ul>
 
-            </div >
-            <button type="button" onClick={() => dispatch(userClearInfo())} className="btn btn-danger" style={{ float: 'right', marginRight: '2vw' }}> logout</button>
 
-        </nav >
+            </div>
+            {sessionStorage.length !== 0 ? (
+                <li className="nav-item dropdown" style={{ color: "white", marginRight: "120px" }}>
+                    <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        {sessionStorage.getItem("name")}
+                    </a>
+                    <ul className="dropdown-menu" >
+                        <li>
+                            <Link className="dropdown-item" to="/Profile">
+                                Profile
+                            </Link>
+                        </li>
+                        <li>
+                            <button
+                                className="dropdown-item"
+                                onClick={() => dispatch(userClearInfo())}
+                            >
+                                Logout
+                            </button>
+                        </li>
+                    </ul>
+                </li>
+            ) : null}
+
+
+
+
+        </nav>
     )
 }
 
