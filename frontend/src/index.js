@@ -18,29 +18,31 @@ import store from './redux/store';
 import UsersDashboard from './components/AdminDashboard/UsersDashboard';
 import About from './components/About/About';
 import Contact from './components/contact';
+import PostsDashboard from './components/AdminDashboard/PostsDashboard';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-     <Provider store={store}>
-    <BrowserRouter>
-      <Routes>
-      <Route path="/dashboard" element={<Dashboard />} >
+    <Provider store={store}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/dashboard" element={<Dashboard />} >
             <Route index element={<IndexRoute />} />
             <Route path="movies" element={<MoviesDashboard />} />
             <Route path="users" element={<UsersDashboard />} />
+            <Route path="posts" element={<PostsDashboard />} />
           </Route>
-        <Route path="/" element={<App />} >
-          <Route path="/" element={<Home />} />
-          <Route path="register" element={<Register />} />
-          <Route path="login" element={<Login />} />
-          {/* <Route path="Browse" element={<Browse />} /> */}
-          <Route path="About" element={<About />} />
-          <Route path="Streams" element={<Streams />} />
-          <Route path="Profile" element={<Profile />} />
-          <Route path="contact" element={<Contact />} />
-          <Route path="movies" element={<MoviesSearch/>} />
-          <Route path="movie/:movieId" element={<Details />} />
+          <Route path="/" element={<App />} >
+            <Route path="/" element={<Home />} />
+            <Route path="register" element={<Register />} />
+            <Route path="login" element={<Login />} />
+            {/* <Route path="Browse" element={<Browse />} /> */}
+            <Route path="About" element={<About />} />
+            <Route path="Streams" element={<Streams />} />
+            <Route path="Profile" element={<Profile />} />
+            <Route path="contact" element={<Contact />} />
+            <Route path="movies" element={<MoviesSearch />} />
+            <Route path="movie/:movieId" element={<Details />} />
 
 
           </Route>

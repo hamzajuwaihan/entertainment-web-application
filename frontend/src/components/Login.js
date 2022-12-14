@@ -54,7 +54,7 @@ function Login() {
           sessionStorage.setItem('name', user.user.name);
           sessionStorage.setItem('id', user.user.id);
           if (user.user.type === 'admin') {
-            navigate('/admin');
+            navigate('/dashboard');
           } else if (user.user.type === 'user') {
             navigate('/');
           }
