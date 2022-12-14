@@ -13,7 +13,7 @@ function UserImage({ name }) {
         <div className="col-lg-2">
             {/* <img src="./user/assets/images/profile.jpg" alt style={{ borderRadius: 23 }} /> */}
             {<div id="name-container">
-                <div id="css-name" ref={nameContainer}>
+                <div id="css-name"  ref={nameContainer}>
                     {/* {initials !== undefined && initials} */}
                 </div>
             </div>}

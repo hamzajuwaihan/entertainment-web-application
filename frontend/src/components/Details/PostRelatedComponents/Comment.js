@@ -8,14 +8,8 @@ function Comment({ comment, user, created_at, handleDelete, id }) {
         handleDelete(id);
     }
 
-    const current = new Date();
-
-    const time = current.toLocaleTimeString("en-US", {
-        hour: "2-digit",
-        minute: "2-digit",
-    });
-
-    const date = `${current.getDate()}/${current.getMonth() + 1}/${current.getFullYear()}`;
+    let dateObj = new Date(created_at);
+    
     return (
         <>
             <div className="card mb-3 bg-dark" >
@@ -25,10 +19,11 @@ function Comment({ comment, user, created_at, handleDelete, id }) {
                         <div className="w-100">
                             <div className="d-flex justify-content-between align-items-center mb-3">
                                 <h6 className=" fw-bold mb-0">
-                                    {user.name}
-                                    <div className="text-dark ms-2 text-white">{comment}</div>
-                                </h6>
-                                <p className="mb-0"> published on {time} </p>
+                                    {user.name} 
+
+                                    <div className="text-dark ms-2 mt-3 text-white">{comment}</div>
+                               </h6>
+                                <p className="mb-0"> published on {dateObj.toLocaleDateString("en-US")} </p>
 
                             </div>
 
