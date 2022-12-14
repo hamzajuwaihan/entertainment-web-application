@@ -19,7 +19,7 @@ class ShowMovie extends Controller
     public function __invoke(Request $request)
     {
         $movie = Movie::find($request->id);
-        $posts = Post::where('movie_id', $request->id)->get();
+        $posts = Post::where('movie_id', $request->id)->where('status','approved')->get();
         $posts->map(function ($post) {
             $post->comments = Comment::where('post_id', $post->id)->get();
 

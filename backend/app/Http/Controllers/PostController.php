@@ -15,7 +15,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::orderBy('status', 'ASC')->get();
         $posts->map(function ($post) {
             $post->user = User::find($post->user_id);
             return $post;
@@ -101,6 +101,9 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Post::destroy($id);
+        return response()->json([
+            'message' => 'Post deleted successfully'
+        ]);
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comment;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
@@ -36,7 +37,9 @@ class CommentController extends Controller
     public function store(Request $request)
     {
         $comment = Comment::create($request->all());
-        return response()->json($comment, 201);
+        $newComment = Comment::find($comment->id);
+        $newComment->user = User::find($newComment->user_id);
+        return response()->json($newComment, 201);
     }
 
     /**
@@ -82,7 +85,7 @@ class CommentController extends Controller
     public function destroy($id)
     {
         Comment::destroy($id);
-        
+
         return response()->json(['message' => 'Comment deleted']);
     }
 }
