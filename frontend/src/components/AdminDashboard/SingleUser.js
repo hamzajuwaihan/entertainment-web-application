@@ -1,16 +1,13 @@
 
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import { useDispatch } from 'react-redux';
-import { deleteUser, editUser } from '../../redux/users/usersActions';
 import swal from 'sweetalert';
-function SingleUser({ id, name, type, email }) {
+function SingleUser({ id, name, type, email, onDelete,onEdit }) {
     const [show, setShow] = useState(false);
-    const close = useRef(null);
-    let dispatch = useDispatch();
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+
     const [user, setUser] = useState({
         id: id,
         name: name,
@@ -22,41 +19,36 @@ function SingleUser({ id, name, type, email }) {
     }
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(editUser({
-            id: user.id,
-            name: user.name,
-            type: user.type,
-            email: user.email
-        }));
-        console.log(user)
-    
-            swal("User info has been Edited!", {
-                icon: "success",
-                
-              });
-           
-        close.current.click();
+        
+
+        onEdit(user);
+        swal("User info has been Edited!", {
+            icon: "success",
+
+        });
+
+
     }
     const handleDelete = () => {
-        
+
         swal({
             title: `Are you sure to delete ${name}?`,
             text: "Once deleted, you will not be able to recover !",
             icon: "warning",
             buttons: true,
             dangerMode: true,
-          })
-          .then((willDelete) => {
-            if (willDelete) {
-            swal("Poof!User  has been deleted!", {
-                icon: "success",
-                
-              });
-              dispatch(deleteUser(id));
-            } else {
-              
-            }
-          });
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    swal("Poof!User  has been deleted!", {
+                        icon: "success",
+
+                    });
+                    onDelete(id);
+                } else {
+
+                }
+            });
     }
     return (
         <>
@@ -67,7 +59,7 @@ function SingleUser({ id, name, type, email }) {
                 <td>{email}</td>
                 <td>
                     <Button variant="warning" onClick={handleShow}>
-                    <i className="fa fa-edit" />
+                        <i className="fa fa-edit" />
                     </Button>
                     <Modal
                         show={show}
@@ -99,17 +91,17 @@ function SingleUser({ id, name, type, email }) {
 
                             </Modal.Body>
                             <Modal.Footer>
-                                <Button variant="secondary" onClick={handleClose} ref={close}>
+                                <Button variant="secondary" onClick={handleClose} >
                                     Close
                                 </Button>
-                                <Button variant="primary" type='submit'>Edit</Button>
+                                <Button variant="primary" type='submit' onClick={handleClose}>Edit</Button>
                             </Modal.Footer>
                         </form>
                     </Modal>
                 </td>
                 <td>
-                    <Button variant="danger" onClick={(id)=> handleDelete(id)}>
-                    <i className="fa fa-remove" />
+                    <Button variant="danger" onClick={() => handleDelete(id)}>
+                        <i className="fa fa-remove" />
                     </Button>
                 </td>
             </tr>

@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, { useEffect } from 'react'
+import swal from 'sweetalert'
 import SingleComment from './SingleComment'
 
 function CommentsDashboard() {
@@ -15,9 +16,28 @@ function CommentsDashboard() {
     }, [])
 
     const handleDelete = (id) => {
-        const newComments = comments.filter(comment => comment.id !== id)
-        setComments(newComments)
-        axios.delete(`http://localhost:8000/api/comment/${id}`)
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          })
+          .then((willDelete) => {
+            if (willDelete) {
+            swal("Poof! Your imaginary raplay has been deleted!", {
+                icon: "success",
+                
+              });
+              const newComments = comments.filter(comment => comment.id !== id)
+              setComments(newComments)
+              axios.delete(`http://localhost:8000/api/comment/${id}`)
+            } else {
+              
+            }
+          });
+       
+
     }
     return (
         <>

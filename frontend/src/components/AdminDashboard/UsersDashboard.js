@@ -1,16 +1,46 @@
 
+import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllUsers } from '../../redux/users/usersActions';
 import SingleUser from './SingleUser';
 
 function UsersDashboard() {
-    const allUsers = useSelector(state => state.user.users);
+
     const [users, setUsers] = useState([]);
-    const dispatch = useDispatch();
+
     useEffect(() => {
-        dispatch(getAllUsers());
+        axios.get('http://localhost:8000/api/users').then((res) => {
+            setUsers(res.data);
+        }).catch((err) => {
+            console.log(err);
+        })
+
     }, []);
+    const handleDelete = (id) => {
+        axios.delete(`http://localhost:8000/api/users/${id}`).then((res) => {
+            const newUsers = users.filter(user => user.id !== id)
+            setUsers(newUsers);
+        }).catch((err) => {
+            console.log(err);
+        })
+    }
+    const handleEdit = (user) => {
+        axios.put(`http://localhost:8000/api/users/${user.id}`, user).then((res) => {
+            console.log(res);
+        }).catch((err) => {
+            console.log(err);
+        })
+        setUsers((prev) => {
+            return prev.map((item) => {
+                if (item.id === user.id) {
+                    return user;
+                }
+                return item;
+            })
+        })
+    }
+
     return (
         <>
             <div className="content-wrapper container">
@@ -27,8 +57,8 @@ function UsersDashboard() {
                             </tr>
                         </thead>
                         <tbody>
-                            {allUsers.map(user => (
-                                <SingleUser key={user.id} {...user} />
+                            {users.map(user => (
+                                <SingleUser key={user.id} {...user} onDelete={handleDelete} onEdit={handleEdit}/>
                             ))}
                         </tbody>
                     </table>

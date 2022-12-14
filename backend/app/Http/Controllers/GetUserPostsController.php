@@ -17,8 +17,8 @@ class GetUserPostsController extends Controller
     public function __invoke(Request $request)
     {
         // $request->id
-        $posts = Post::where('user_id', $request->id)->get();
-        $posts->map(function($post){
+        $posts = Post::where('user_id', $request->id)->where('status', 'approved')->get();
+        $posts->map(function ($post) {
             $post->movie = Movie::find($post->movie_id);
             return $post;
         });
