@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Movie;
 use Illuminate\Http\Request;
 use App\Models\UserMovie;
 
 class FavouriteController extends Controller
 {
-     /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -55,7 +56,12 @@ class FavouriteController extends Controller
      */
     public function show($id)
     {
-        //
+        $favouriteMovies = UserMovie::where('user_id', $id)->get();
+        $favouriteMovies->map(function ($favouriteMovie) {
+            $favouriteMovie->movie = Movie::find($favouriteMovie->movie_id);
+            return $favouriteMovie;
+        });
+        return response()->json($favouriteMovies);
     }
 
     /**

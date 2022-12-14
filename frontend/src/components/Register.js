@@ -2,7 +2,8 @@ import "../registerLogin.css";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { userRegister } from "../redux/users/usersActions";
+import { userLoginSuccess, userRegister, userRegisterFailure, userRegisterSuccess } from "../redux/users/usersActions";
+import axios from "axios";
 
 function Register() {
   const navigate = useNavigate();
@@ -48,25 +49,42 @@ function Register() {
       setErrorMessage("the password does not match");
     } else {
       dispatch(
-        userRegister({
-          name: name,
-          email: email,
-          password: password,
-          password_confirmation: passwordConfirm,
-        })
+        userRegister()
       );
+      axios.post('http://127.0.0.1:8000/api/register', {
+        name: name,
+        email: email,
+        password: password,
+        password_confirmation: passwordConfirm,
+      })
+        .then(response => {
+          const user = response.data.user
+          dispatch(userRegisterSuccess(user))
+          dispatch(userLoginSuccess(user));
+          sessionStorage.setItem('type', user.type);
+          sessionStorage.setItem('name', user.name);
+          sessionStorage.setItem('id', user.id);
 
-      if(user.error === 'Request failed with status code 422'){
+          sessionStorage.setItem('user', JSON.stringify(user));
+
+          setEmail("");
+          setPassword("");
+          setPassword("");
+          setPasswordCon("");
+          navigate("/");
+
+
+        })
+        .catch(error => {
+          const errorMsg = error.message
+          dispatch(userRegisterFailure(errorMsg))
+          console.log(errorMsg);
+        })
+      if (user.error === 'Request failed with status code 422') {
         setErrorMessage('Registration was unsuccessful')
-    
-    }else{
-     setEmail("");
-      setPassword("");
-      setPassword("");
-      setPasswordCon("");
-      navigate("/");
-    }
-     
+
+      }
+
     }
   };
 
