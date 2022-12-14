@@ -20,7 +20,7 @@ function NavBar() {
 
                     <li className="nav-item me-3 me-lg-1 mx-5">
                         <a className="nav-link text-white" href="#">
-                            <NavLink to={"/posts"}> <span><i className="fas fa-flag fa-lg px-2" style={{ color: '#f1c40f' }}></i>Posts </span></NavLink>
+                            <NavLink to={"posts"}> <span><i className="fas fa-flag fa-lg px-2" style={{ color: '#f1c40f' }}></i>Posts </span></NavLink>
                         </a>
                     </li>
 

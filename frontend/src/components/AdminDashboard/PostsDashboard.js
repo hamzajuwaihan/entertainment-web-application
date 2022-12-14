@@ -6,6 +6,9 @@ function PostsDashboard() {
     const [posts, setPosts] = React.useState([]);
 
     const handleDelete = (id) => {
+        const newPosts = posts.filter((post) => post.id !== id);
+        setPosts(newPosts);
+        axios.delete(`http://localhost:8000/api/post/${id}`);
     }
     const handleEdit = (id, status) => {
         setPosts(posts.map((post) => {
@@ -21,7 +24,7 @@ function PostsDashboard() {
             return prev.sort((a, b) => {
                 if (a.status === "pending") {
                     return -1;
-                }else{
+                } else {
                     return 1;
                 }
             }

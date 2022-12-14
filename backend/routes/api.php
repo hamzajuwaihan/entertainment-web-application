@@ -1,13 +1,16 @@
 <?php
 
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\DeleteFavouriteController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\FavouriteController;
+use App\Http\Controllers\IsFavouriteController;
 use App\Http\Controllers\ProfilePicture;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ShowMovie;
+use App\Http\Controllers\SingleUserUpdate;
 use App\Http\Controllers\Users;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -40,3 +43,6 @@ Route::resource('post', PostController::class);
 Route::resource('favourite', FavouriteController::class);
 Route::resource('comment', CommentController::class);
 Route::resource('latestMovie', 'App\Http\Controllers\LatestMovieController');
+Route::get('isFavourite/{id}/{movie_id}', IsFavouriteController::class);
+Route::delete('deleteFavourite', DeleteFavouriteController::class);
+Route::put('updateuser/{id}', SingleUserUpdate::class);

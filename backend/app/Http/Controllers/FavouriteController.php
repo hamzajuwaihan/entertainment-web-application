@@ -37,14 +37,12 @@ class FavouriteController extends Controller
     public function store(Request $request)
     {
         UserMovie::create([
-            'user_id' => $request->user_id,
-            'movie_id' => $request->movie_id,
-
-
+            'user_id' => $request->userId,
+            'movie_id' => $request->movieId,
         ]);
 
         return response()->json([
-            'message' => 'Post created successfully'
+            'message' => 'this movie was added created successfully'
         ]);
     }
 
@@ -54,14 +52,10 @@ class FavouriteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request)
     {
-        $favouriteMovies = UserMovie::where('user_id', $id)->get();
-        $favouriteMovies->map(function ($favouriteMovie) {
-            $favouriteMovie->movie = Movie::find($favouriteMovie->movie_id);
-            return $favouriteMovie;
-        });
-        return response()->json($favouriteMovies);
+        
+            // return response()->json($request);
     }
 
     /**

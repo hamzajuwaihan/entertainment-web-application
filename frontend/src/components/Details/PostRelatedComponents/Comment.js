@@ -1,6 +1,7 @@
 import React from 'react'
 
 function Comment({ comment, user, created_at, handleDelete, id }) {
+
     const userID = JSON.parse(sessionStorage.getItem('user')) ? JSON.parse(sessionStorage.getItem('user')).id : null;
     const commentOwner = userID === user.id;
     const clickHandler = () => {
@@ -9,12 +10,12 @@ function Comment({ comment, user, created_at, handleDelete, id }) {
 
     const current = new Date();
 
-const time = current.toLocaleTimeString("en-US", {
-  hour: "2-digit",
-  minute: "2-digit",
-});
+    const time = current.toLocaleTimeString("en-US", {
+        hour: "2-digit",
+        minute: "2-digit",
+    });
 
-  const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
+    const date = `${current.getDate()}/${current.getMonth() + 1}/${current.getFullYear()}`;
     return (
         <>
             <div className="card mb-3 bg-dark" >
@@ -28,7 +29,7 @@ const time = current.toLocaleTimeString("en-US", {
                                     <div className="text-dark ms-2 text-white">{comment}</div>
                                 </h6>
                                 <p className="mb-0"> published on {time} </p>
-                             
+
                             </div>
 
                         </div>

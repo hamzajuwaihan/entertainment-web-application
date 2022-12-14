@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Movie;
 use App\Models\User;
+use App\Models\UserMovie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -48,8 +50,16 @@ class Users extends Controller
     public function show($id)
     {
         $user = User::find($id);
+        $favouriteMovies = UserMovie::where('user_id', $id)->get();
+        $favouriteMovies->map(function ($favouriteMovie) {
+            $favouriteMovie->movie = Movie::find($favouriteMovie->movie_id);
+            return $favouriteMovie;
+        });
 
-        return response()->json($user);
+        return response()->json([
+            'user' => $user,
+            'favouriteMovies' => $favouriteMovies
+        ]);
     }
 
     /**
@@ -73,15 +83,14 @@ class Users extends Controller
     public function update(Request $request)
     {
         DB::table('users')
-                ->where('id', $request->id)
-                ->update([
-                    'name' => $request->name,
-                    'email' => $request->email,
-                    'type' => $request->type,
-                ]);
-        
+            ->where('id', $request->id)
+            ->update([
+                'name' => $request->name,
+                'email' => $request->email,
+                'type' => $request->type,
+            ]);
+
         return response()->json(User::all());
-        
     }
 
     /**

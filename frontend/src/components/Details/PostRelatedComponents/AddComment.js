@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react'
 import { useParams } from 'react-router-dom';
 
-function AddComment({ post_id }) {
+function AddComment({ post_id, handleAdd }) {
     const [closed, setClosed] = React.useState(false);
     const { movieId } = useParams();
     const userID = JSON.parse(sessionStorage.getItem('user')) === null ? 0 : JSON.parse(sessionStorage.getItem('user')).id;
@@ -14,12 +14,12 @@ function AddComment({ post_id }) {
             user_id: userID,
             comment: comment
         }).then((res) => {
-            console.log(res);
+            handleAdd(res.data);
             setClosed(!closed);
         }).catch((err) => {
             console.log(err);
         })
-
+        
         setComment('');
     }
 

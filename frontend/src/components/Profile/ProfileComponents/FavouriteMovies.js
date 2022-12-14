@@ -2,18 +2,8 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import Movie from './Movie';
-function FavouriteMovies() {
-    const [favouriteMovies, setFavouriteMovies] = useState([]);
-    useEffect(() => {
-        const id = sessionStorage.getItem('id');
-        axios.get(`http://localhost:8000/api/favourite/${id}`, id).then((res) => {
-            setFavouriteMovies(res.data);
-         
-        }).catch((err) => {
-            console.log(err)
-        })
-   
-    }, []);
+function FavouriteMovies({ favouriteMovies }) {
+
     return (
         <div className="row">
             <div className="col-lg-12">
