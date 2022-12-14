@@ -80,7 +80,7 @@ function RandomTrailer() {
 
     return (
         <div className="gaming-library">
-        <div className="col-lg-12 h-12" style={{height:"120vh"}}>
+        <div className="col-lg-12 h-12" style={{height:"100vh"}}>
             <div className="heading-section">
                 <h4><em>Random Movie</em> Trailer</h4>
             </div>
@@ -89,7 +89,7 @@ function RandomTrailer() {
                 <main>
                     {movie ?
                         <div className="poster"
-                             style={{backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)), url(${BACKDROP_PATH}${movie.backdrop_path})`,height:'100vh'}}>
+                             style={{backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)), url(${BACKDROP_PATH}${movie.backdrop_path})`,height:'80vh'}}>
                             {playing ?
                                 <>
                                     <Youtube
@@ -112,20 +112,23 @@ function RandomTrailer() {
                                                 },
                                             }
                                         }
-                                        style={{height:'100vh'}}
+                                        style={{height:'80vh'}}
                                     />
-                                    <button onClick={() => setPlaying(false)} className={"button close-video"}>Close
-                                    </button>
+                                    {/* <button onClick={() => setPlaying(false)} className={"button close-video"}>Close
+                                    </button> */}
                                 </> :
                                 <div className="center-max-size">
-                                    <div className="poster-content">
+                                    <div className="poster-content">  
+                                    <h1 className="p-3" style={{backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 1))`}}>{movie.title}</h1>
+                                        {/* <p>{movie.overview}</p> */}
                                         {trailer ?
-                                            <button className={"button play-video"} onClick={() => setPlaying(true)}
-                                                    type="button">Play
-                                                Trailer</button>
+                                         <button style={{border:"0px",background:"none"}} className={"button play-video"} onClick={() => setPlaying(true)}
+                                                    type="button">
+                                                    <i class="fa-brands fa-youtube" style={{fontSize:"7rem",color:"red",position:"relative",top:"15vh",left:"33vw" }}></i>
+
+                                                    </button>
                                             : 'Sorry, no trailer available'}
-                                        <h1>{movie.title}</h1>
-                                        <p>{movie.overview}</p>
+                                      
                                     </div>
                                 </div>
                             }

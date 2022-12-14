@@ -5,6 +5,7 @@ import { fetchMovies } from '../redux/movies/moviesActions';
 import SingleMovie from './Streams/SingleMovie';
 
 function MoviesContainerTest() {
+    const [search, setSearch] = useState('');
     const movies = useSelector(state => state.movies);
     const dispatch = useDispatch();
     const [currentPage, setCurrentPage] = useState(1);
@@ -34,9 +35,10 @@ function MoviesContainerTest() {
          
             <div className="live-stream">
                 <div className="row">
+                    
                     <div className="col-lg-12">
                         <div className="heading-section">
-                            <h4 class>Most Popular Right Now</h4>
+                            <h4 class><em>Results :</em></h4>
                         </div>
                         <div className="row">
                             {currentPosts.length > 0 ? currentPosts.map((movie) => {
@@ -57,7 +59,7 @@ function MoviesContainerTest() {
             <ul className="pagination justify-content-center" style={{ marginTop: '10vh' }}>
                 {pageNumbers.map((number) => (
                     <li key={number} className="page-item" >
-                        <button onClick={() => paginate(number)} className="page-link" style={{backgroundColor:'#ec6090', color:'white'}}>
+                        <button onClick={() => paginate(number)} className="page-link" style={{marginRight:"20px" ,backgroundColor:'#ec6090', color:'white'}}>
                             {number}
                         </button>
                     </li>
@@ -65,29 +67,7 @@ function MoviesContainerTest() {
             </ul>
             
         </>
-        // <div>
-        //     <div className='container mt-5'>
-        //         <div className="row">
-        //             <div className="heading-section  col-9">
-        //                 <h4><em>Most Popular</em> Live Stream</h4>
-        //             </div>
-        //         </div>
-        //         <div className='row'>
-
-        //             {
-        //                 currentPosts.length > 0 ? currentPosts.map((movie) => {
-        //                     return (
-
-        //                         <SingleMovieTest title={movie.title} rating={movie.rating} id={movie.id} key={movie.id} />
-        //                         // <MovieDetails title={movie.title} rating={movie.rating} id={movie.id}  key={movie.id} />
-        //                     )
-        //                 }) : null
-        //             }
-
-        //         </div>
-
-        //     </div>
-        // </div>
+        
     )
 }
 

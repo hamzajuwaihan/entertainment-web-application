@@ -9,7 +9,7 @@ const Banner = () => {
                 <div className="row">
                     <div className="col-lg-7">
                         <div className="header-text">
-                            <h6>Welcome To Movies</h6>
+                            <h6>Welcome To FILMFEED</h6>
                             <h4><em>Browse</em> Our Popular Movies Here</h4>
                             <div className="main-button">
                                 <a href="/movies">Browse Now</a>
