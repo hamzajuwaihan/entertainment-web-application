@@ -31,9 +31,11 @@ function AddPost() {
 
     return (
         <>
+
          <div className="heading-section mt-5 px-3">
           <h4><em>Add a </em> post</h4></div>
          
+
             <div className="container mt-3 ">
                 <div className='row justify-content-start'>
                     <div className=" py-3 border-0" >
@@ -42,9 +44,9 @@ function AddPost() {
 
                                 <div className="form-outline w-100">
                                     <textarea className="form-control" id="textAreaExample" rows="3" placeholder='Type a post'
-                                        style={{ background: "#27292a", color:"white" }} value={post.text} name="text" onChange={(e)=> handleChange(e)}></textarea>
+                                        style={{ background: "#27292a", color: "white" }} value={post.text} name="text" onChange={(e) => handleChange(e)}></textarea>
                                 </div>
-                            </div><br/>
+                            </div><br />
                             <div className="float-end mt-2 pt-1">
                                 <button type="submit" style={{backgroundColor:"#ec6090", color:"white"}} className="btn me-2 btn-sm" >Post</button>
                                 <button type="button" style={{border:"1px solid #ec6090", color:"white"}} className="btn  btn-sm">Cancel</button>

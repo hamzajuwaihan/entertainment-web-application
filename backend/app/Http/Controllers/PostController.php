@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -14,7 +15,13 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $posts = Post::all();
+        $posts->map(function ($post) {
+            $post->user = User::find($post->user_id);
+            return $post;
+        });
+
+        return response()->json($posts);
     }
 
     /**
@@ -39,9 +46,9 @@ class PostController extends Controller
             'user_id' => $request->user_id,
             'movie_id' => $request->movie_id,
             'post' => $request->post,
-            
+
         ]);
-        
+
         return response()->json([
             'message' => 'Post created successfully'
         ]);
@@ -78,7 +85,12 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $post = Post::find($id);
+        $post->status = $request->status;
+        $post->save();
+        return response()->json([
+            'message' => 'Post updated successfully'
+        ]);
     }
 
     /**

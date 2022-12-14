@@ -1,7 +1,8 @@
 import React from 'react'
 
 function Comment({ comment, user, created_at, handleDelete, id }) {
-    const commentOwner = JSON.parse(sessionStorage.getItem('user')).id === user.id;
+    const userID = JSON.parse(sessionStorage.getItem('user')) ? JSON.parse(sessionStorage.getItem('user')).id : null;
+    const commentOwner = userID === user.id;
     const clickHandler = () => {
         handleDelete(id);
     }
