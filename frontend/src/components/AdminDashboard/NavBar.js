@@ -7,8 +7,10 @@ function NavBar() {
     const dispatch = useDispatch();
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-dark pl-auto">
-
-            <Link className="navbar-brand pl-5 text-white" to="/dashboard" >DashBoard</Link>
+    <a href="/" className="logo">
+                                    <img src="/user/assets/images/logo2.png" style={{width:"150px",marginLeft:"120px"}} alt="" />
+                                </a>
+            {/* <Link className="navbar-brand pl-5 text-white" to="/dashboard/movies"  style={{marginLeft:"120px"}}>DashBoard</Link> */}
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
             </button>
@@ -35,10 +37,43 @@ function NavBar() {
 
                         </a>
                     </li>
+            
+
+                      </ul>
+                      
+                      
+                       </div>
+                       {sessionStorage.length !== 0 ? (
+                                        <li className="nav-item dropdown"style={{color:"white" , marginRight:"120px"}}>
+                                            <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                {sessionStorage.getItem("name")}
+                                            </a>
+                                            <ul className="dropdown-menu" >
+                                                <li>
+                                                    <Link className="dropdown-item" to="Profile">
+                                                        Profile
+                                                    </Link>
+                                                </li>
+                                                <li>
+                                                    <button
+                                                        className="dropdown-item"
+                                                        onClick={() => dispatch(userClearInfo())}
+                                                    >
+                                                        Logout
+                                                    </button>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    ) : null}
+
+
+
+
 
                 </ul>
             </div>
             <button type="button" onClick={() => dispatch(userClearInfo())} className="btn btn-danger" style={{ float: 'right', marginRight: '2vw' }}> logout</button>
+
         </nav>
     )
 }

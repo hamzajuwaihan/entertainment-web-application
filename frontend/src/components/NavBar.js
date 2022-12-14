@@ -3,7 +3,7 @@ import { userClearInfo } from "../redux/users/usersActions";
 import { fetchMovies, searchMovie } from '../redux/movies/moviesActions';
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
-import { NavLink, useLocation, useNavigate } from 'react-router-dom'
+import { NavLink,Link, useLocation, useNavigate } from 'react-router-dom'
 
 function showBox() {
     const status = document.getElementById("nav-box-minimize").style.display;
@@ -97,9 +97,9 @@ const NavBar = () => {
                                             </a>
                                             <ul className="dropdown-menu">
                                                 <li>
-                                                    <NavLink className="dropdown-item" to="Profile">
+                                                    <Link className="dropdown-item" to="Profile">
                                                         Profile
-                                                    </NavLink>
+                                                    </Link>
                                                 </li>
                                                 <li>
                                                     <button

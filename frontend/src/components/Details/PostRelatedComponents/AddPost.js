@@ -31,8 +31,10 @@ function AddPost() {
 
     return (
         <>
-            <div className="heading-section mt-5 px-3">
-                <h4><em>Add</em> Post</h4></div>
+
+         <div className="heading-section mt-5 px-3">
+          <h4><em>Add a </em> post</h4></div>
+         
 
             <div className="container mt-3 ">
                 <div className='row justify-content-start'>
@@ -46,8 +48,8 @@ function AddPost() {
                                 </div>
                             </div><br />
                             <div className="float-end mt-2 pt-1">
-                                <button type="submit" style={{ backgroundColor: "#ec6090", color: "white" }} className="btn me-2 btn-sm" >post</button>
-                                <button type="button" style={{ border: "1px solid #ec6090", color: "white" }} className="btn  btn-sm">Cancel</button>
+                                <button type="submit" style={{backgroundColor:"#ec6090", color:"white"}} className="btn me-2 btn-sm" >Post</button>
+                                <button type="button" style={{border:"1px solid #ec6090", color:"white"}} className="btn  btn-sm">Cancel</button>
                             </div>
                         </form>
                     </div>
