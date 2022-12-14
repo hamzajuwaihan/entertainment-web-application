@@ -23,14 +23,31 @@ function Post({ id, comments, post, user, created_at }) {
         minute: "2-digit",
     });
     const AddReply = (comment) => {
-        console.log(comment);
+
 
         setAllComment((prev) => {
             return [...prev, comment];
         });
 
     }
+    const editHandler = (comment) => {
+        axios.put(`http://localhost:8000/api/comment/${comment.id}`, comment).then((res) => {
+            console.log(res);
+        }).catch((err) => {
+            console.log(err);
+        })
+        setAllComment((prev) => {
+            return prev.map((item) => {
+                if (item.id === comment.id) {
+                    return comment;
+                }
+                return item;
+            })
+        })
+       
 
+    }
+    
     const date = `${current.getDate()}/${current.getMonth() + 1}/${current.getFullYear()}`;
     return (
         <>
@@ -58,7 +75,7 @@ function Post({ id, comments, post, user, created_at }) {
                             {
                                 allComment.map((comment) => {
                                     return (
-                                        <Comment {...comment} handleDelete={handleDelete} />
+                                        <Comment {...comment} handleDelete={handleDelete} editHandler={editHandler} />
                                     )
                                 })
                             }

@@ -10,8 +10,8 @@ function PostComment() {
   return (
     <>
 
-      <AddPost />
-
+      {JSON.parse(sessionStorage.getItem('user')) === null ? null : <AddPost />}
+      
     </>
   )
 }

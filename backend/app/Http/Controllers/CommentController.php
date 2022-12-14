@@ -15,7 +15,12 @@ class CommentController extends Controller
      */
     public function index()
     {
-        //
+        $comments = Comment::all();
+        $comments->map(function ($comment) {
+            $comment->user = User::find($comment->user_id);
+            return $comment;
+        });
+        return response()->json($comments);
     }
 
     /**
@@ -73,7 +78,10 @@ class CommentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $comment = Comment::find($id);
+        $comment->update($request->all());
+        $updatedComment = Comment::find($id);
+        return response()->json($updatedComment, 200);
     }
 
     /**

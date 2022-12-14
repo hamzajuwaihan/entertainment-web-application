@@ -1,13 +1,27 @@
-import React from 'react'
+import React, { useState } from 'react';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+import { useParams } from 'react-router';
+function Comment({ comment, user, created_at, handleDelete, id, editHandler }) {
+    const [show, setShow] = useState(false);
 
-function Comment({ comment, user, created_at, handleDelete, id }) {
-
+    const { movieId } = useParams();
+    const [commentText, setCommentText] = useState(comment);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
     const userID = JSON.parse(sessionStorage.getItem('user')) ? JSON.parse(sessionStorage.getItem('user')).id : null;
     const commentOwner = userID === user.id;
     const clickHandler = () => {
         handleDelete(id);
     }
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        editHandler({
+            id, comment: commentText, movie_id: movieId,
+            user: user
+        });
 
+    }
     const current = new Date();
 
     const time = current.toLocaleTimeString("en-US", {
@@ -37,6 +51,39 @@ function Comment({ comment, user, created_at, handleDelete, id }) {
 
                     </div>
                     {commentOwner && (<button className='btn btn-sm btn-danger' onClick={clickHandler}><i className="fa fa-remove"></i></button>)}
+                    {commentOwner && (
+
+                        <>
+                            <Button variant="primary" className='btn btn-sm btn-info mx-2' onClick={handleShow}>
+                                <i className="fa fa-edit"></i>
+                            </Button>
+                            <Modal show={show} onHide={handleClose}
+                                centered>
+                                <Modal.Header closeButton>
+                                    <Modal.Title>Edit your comment</Modal.Title>
+                                </Modal.Header>
+                                <form onSubmit={handleSubmit}>
+                                    <Modal.Body>
+                                        <div className="form-group">
+                                            <label htmlFor="comment">Comment</label>
+                                            <textarea className="form-control" id="comment" rows="3" value={commentText}
+                                                onChange={(e) => setCommentText(e.target.value)}
+                                            ></textarea>
+                                        </div>
+                                    </Modal.Body>
+                                    <Modal.Footer>
+                                        <Button variant="secondary" onClick={handleClose}>
+                                            Close
+                                        </Button>
+                                        <Button variant="primary" type="submit" onClick={handleClose}>
+                                            Save Changes
+                                        </Button>
+                                    </Modal.Footer>
+
+                                </form>
+                            </Modal>
+                        </>
+                    )}
                 </div>
             </div>
         </>

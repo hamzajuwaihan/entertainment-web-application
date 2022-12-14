@@ -4,6 +4,7 @@ import DisplayInfo from './ProfileComponents/DisplayInfo'
 import FavouriteMovies from './ProfileComponents/FavouriteMovies'
 import MainInfo from './ProfileComponents/MainInfo'
 import UserImage from './ProfileComponents/UserImage'
+import UserPosts from './ProfileComponents/UserPosts'
 
 function ProfileBanner() {
   const [user, setUser] = useState({
@@ -52,7 +53,7 @@ function ProfileBanner() {
           </div>
 
           <FavouriteMovies favouriteMovies={favouriteMovies} />
-
+          <UserPosts user={user}/>
 
 
         </div>
