@@ -18,12 +18,12 @@ function UsersDashboard() {
                     <table class="table table-striped table-dark mt-5">
                         <thead>
                             <tr>
-                                <th scope="col">Id</th>
-                                <th scope="col">name</th>
-                                <th scope="col">type</th>
+                                <th scope="col">#</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Type</th>
                                 <th scope="col">email</th>
-                                <th scope="col">edit</th>
-                                <th scope="col">delete</th>
+                                <th scope="col">Edit</th>
+                                <th scope="col">Delete</th>
                             </tr>
                         </thead>
                         <tbody>

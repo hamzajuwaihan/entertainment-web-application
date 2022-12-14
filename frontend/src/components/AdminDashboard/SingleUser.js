@@ -42,8 +42,8 @@ function SingleUser({ id, name, type, email }) {
                 <td>{type}</td>
                 <td>{email}</td>
                 <td>
-                    <Button variant="primary" onClick={handleShow}>
-                        Edit
+                    <Button variant="warning" onClick={handleShow}>
+                    <i className="fa fa-edit" />
                     </Button>
                     <Modal
                         show={show}
@@ -85,7 +85,7 @@ function SingleUser({ id, name, type, email }) {
                 </td>
                 <td>
                     <Button variant="danger" onClick={(id)=> handleDelete(id)}>
-                        Delete
+                    <i className="fa fa-remove" />
                     </Button>
                 </td>
             </tr>

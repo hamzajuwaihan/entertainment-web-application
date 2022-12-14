@@ -76,8 +76,10 @@ function SingleMovie({ id, image, title, genre, overview, release_date, runtime,
              }}/></th>
             <td>{title}</td>
             <td>
-                <Button variant="primary" onClick={handleShow}>
-                    Edit
+                <Button variant="warning" onClick={handleShow}>
+                   
+                    <i className="fa fa-edit" />
+
                 </Button>
                 <Modal
                     show={show}

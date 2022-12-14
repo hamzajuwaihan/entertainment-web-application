@@ -35,12 +35,13 @@ function Post({ id, comments, post, user, created_at }) {
                                 <div>
                                     <h6 className="fw-bold mb-1">{user.name}</h6>
                                     <p className="text-muted small mb-0">
-                                        {time}<br/>
-                                        {date}
+                                        
+                                        
+                                        {created_at}
                                     </p>
                                 </div>
                             </div>
-
+                            {created_at}
                             <p className="mt-3 mb-4 pb-2">
                                 {post}
                             </p>

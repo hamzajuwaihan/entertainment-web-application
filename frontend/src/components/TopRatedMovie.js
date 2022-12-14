@@ -14,7 +14,7 @@ function TopRatedMovie({ id, title, rating, image , release_date,genre}) {
                                    <h4>{title}<br/><span>{genre}</span></h4>
                                         <ul>
                                             <li><i className="fa fa-star"></i> {rating}</li>
-                                            <li><i className="fa fa-clock"></i>{release_date}</li>
+                                            <li><i className="fa fa-calender"></i>{release_date}</li>
  
                                         </ul>
                                 </div>
