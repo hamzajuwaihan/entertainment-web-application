@@ -98,7 +98,7 @@ function Comment({ comment, user, created_at, handleDelete, id, editHandler }) {
                                         <Button variant="secondary" onClick={handleClose}>
                                             Close
                                         </Button>
-                                        <Button variant="primary" type="submit" onClick={handleClose}>
+                                        <Button style={{backgroundColor:"#e75e8d"}}  type="submit" onClick={handleClose}>
                                             Save Changes
                                         </Button>
                                     </Modal.Footer>
