@@ -69,7 +69,7 @@ function MainInfo({ user, handleEdit, closeButton }) {
                         <Button variant="secondary" ref={closeButton} onClick={handleClose}>
                             Close
                         </Button>
-                        <Button variant="primary" type="submit" onClick={handleClose}>
+                        <Button style={{backgroundColor:"#e75e8d"}} variant="#e75e8d" type="submit" onClick={handleClose}>
                             Save Changes
                         </Button>
                     </Modal.Footer>

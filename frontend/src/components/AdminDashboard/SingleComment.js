@@ -12,7 +12,7 @@ function SingleComment({ id, comment, user, created_at, handleDelete }) {
                 <td>{user.name}</td>
                 <td>{dateObj.toLocaleDateString("en-US")}</td>
                 <td>
-                    <button className='btn btn-sm btn-danger' onClick={() => handleDelete(id)}><i className="fa fa-remove"></i></button>
+                    <button  className='btn btn-sm btn-danger' onClick={() => handleDelete(id)}><i className="fa fa-remove"></i></button>
                 </td>
             </tr>
         </>

@@ -142,7 +142,7 @@ function SingleMovie({ id, image, title, genre, overview, release_date, runtime,
                             <Button variant="secondary" onClick={handleClose} ref={close}>
                                 Close
                             </Button>
-                            <Button variant="primary" type='submit'>Edit</Button>
+                            <Button style={{backgroundColor:"#e75e8d"}}  type='submit'>Edit</Button>
                         </Modal.Footer>
                     </form>
                 </Modal>

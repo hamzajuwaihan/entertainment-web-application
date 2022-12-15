@@ -94,7 +94,7 @@ function SingleUser({ id, name, type, email, onDelete,onEdit }) {
                                 <Button variant="secondary" onClick={handleClose} >
                                     Close
                                 </Button>
-                                <Button variant="primary" type='submit' onClick={handleClose}>Edit</Button>
+                                <Button  style={{backgroundColor:"#e75e8d"}}  type='submit' onClick={handleClose}>Edit</Button>
                             </Modal.Footer>
                         </form>
                     </Modal>

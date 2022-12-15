@@ -70,7 +70,7 @@ function SinglePost({ post, user, date, id, handleDelete, created_at, status, ha
                             <Button variant="secondary" ref={closeButton} onClick={handleClose}>
                                 Close
                             </Button>
-                            <Button variant="primary" type="submit" onClick={handleClose}>
+                            <Button style={{backgroundColor:"#e75e8d"}}  type="submit" onClick={handleClose}>
                                 Save Changes
                             </Button>
                         </Modal.Footer>
